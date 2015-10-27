@@ -182,7 +182,7 @@ td,
 th {
   padding: 0; }
 
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/build//css/main-10f1abc864.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/build//css/main-3c14ff286c.css */
 @media print {
   *,
   *:before,
@@ -10962,6 +10962,262 @@ Copyright (c) 2014 Daniel Eden
   right: 100%;
   width: 100%;
   height: 4px;
+}
+
+.btn-primary{
+ background-color: #33414e;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+   background: #485C6E;
+}
+
+
+
+/* agar setiap elemen yg memakai class spin, langsung berputar */
+.spin {
+ -webkit-animation: spin .9s infinite linear;
+ -moz-animation: spin .9s infinite linear;
+ -o-animation: spin .9s infinite linear;
+ animation: spin .9s infinite linear;
+    -webkit-transform-origin: 50% 58%;
+        transform-origin:50% 58%;
+        -ms-transform-origin:50% 58%; /* IE 9 */
+}
+
+@-moz-keyframes spin {
+ from {
+   -moz-transform: rotate(0deg);
+ }
+ to {
+   -moz-transform: rotate(360deg);
+ }
+}
+
+@-webkit-keyframes spin {
+ from {
+   -webkit-transform: rotate(0deg);
+ }
+ to {
+   -webkit-transform: rotate(360deg);
+ }
+}
+
+@keyframes spin {
+ from {
+   transform: rotate(0deg);
+ }
+ to {
+   transform: rotate(360deg);
+ }
+}
+
+
+
+@link-color:       @brand-primary;
+@link-color-hover: lighten(@link-color, 90%);
+
+a {
+ color:  #33414e;
+ text-decoration: none;
+ -o-transition:.5s;
+ -ms-transition:.5s;
+ -moz-transition:.5s;
+ -webkit-transition:.5s;
+ /* ...and now for the proper property */
+ transition:.5s;
+
+}
+a:hover {
+   color: #485C6E;
+    text-decoration: none;
+  }
+
+
+
+/* bagian sidebar */
+
+
+
+
+/* custom */
+.title_header{
+ margin-top: -0.5em;
+ }
+
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+ position: relative;
+ min-height: 100%;
+}
+body {
+ /* Margin bottom by footer height */
+ margin-bottom: 400px;
+}
+.footer {
+ position: absolute;
+ bottom: 0;
+ width: 100%;
+ /* Set the fixed height of the footer here */
+
+ background-color: #ddd;
+  background-image: url("../../img/pat01.jpg");
+}
+
+
+ /* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+ padding: 20px 15px 0;
+}
+.container .text-muted {
+ margin: 20px 0;
+}
+
+.footer > .container {
+ padding-right: 15px;
+ padding-left: 15px;
+ background-color: #ddd;
+background-image: url("../../img/pat01.jpg");
+}
+
+
+
+
+
+/* bagian backend footer */
+body > .container-fluid {
+ padding: 100px 15px 0;
+}
+.container .text-muted {
+ margin: 20px 0;
+}
+
+.footer > .container-fluid {
+ padding-right: 15px;
+ padding-left: 15px;
+
+}
+
+
+
+
+code {
+ font-size: 80%;
+}
+
+
+
+
+/* bagian header front end */
+.header_website{
+ background-color: #ddd;
+ padding-top: 0.2em;
+ height: 150px;
+  background-image: url("../../img/pat01.jpg");
+}
+.header_website h1 a{
+ color: #686363;
+  text-shadow: 2px 2px 2px #aaa;
+}
+.header_website h1 a:hover{
+ color: #837d7d;
+}
+.header_website h3{
+ color: #686363;
+}
+
+.pointer{
+ cursor: pointer;
+}
+
+/* customize nav samping */
+/* link */
+
+.navbar-default .navbar-text  {
+   color: #eee;
+}
+.navbar-default .navbar-text a {
+   color: #eee;
+}
+
+.navbar-default .navbar-text a:hover {
+   color: #aaa;
+}
+
+.navbar-default .navbar-nav > li > a {
+   color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+   color: #eee;
+}
+
+.navbar-default .nav > li > a {
+   color: #fff;
+}
+
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+   color: #eee;
+   background: transparent;
+}
+
+
+/* title */
+.navbar-default .navbar-brand {
+   color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+   color: #eee;
+}
+
+/* navbar */
+.navbar-default {
+   background-color: #53bd70;
+   color : #fff;
+ }
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+   color: #fff;
+   background-color: #276c3a;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+   color: #fff;
+   background-color: #276c3a;
+}
+
+
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a {
+   color: #222;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover,
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus{
+ background-color: #485C6E;
+ color : #fff;
+}
+
+
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu {
+   background-color: #fff;
+   color: #222;
 }
 
 /*# sourceMappingURL=main.css.map */

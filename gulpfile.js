@@ -33,6 +33,8 @@ elixir(function(mix) {
          "plugins/font-awesome/css/font-awesome.css",
          "plugins/animate/animate.css",
          "plugins/pace/pace.css",
+         "custom.css",
+         "navbar.css",
 
     ], 'public/css/main.css');
 
