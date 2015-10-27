@@ -18,6 +18,7 @@ class CreateRefSoalTable extends Migration
             $table->integer('waktu_pengerjaan'); //dlm satuan menit
             $table->integer('mst_user_id');
             $table->integer('mst_kelas_id');
+            $table->integer('ref_tingkat_kesulitan_soal_id'); //relasi ke tabel ref_tingkat_kesulitan_soal
             $table->enum('is_jawaban_acak', [1,0])->default(0); //untuk membuat jawaban acak atau tidak
             $table->timestamps();
         });
