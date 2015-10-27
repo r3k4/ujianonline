@@ -8,4 +8,6 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-menggunakan PHP dan mysql
+Sistem Bank Soal dan Ujian Online, menggunakan PHP dan mysql.
+
+untuk SMA, MA, atau Sederajat
