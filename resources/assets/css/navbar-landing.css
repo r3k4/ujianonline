@@ -7,7 +7,7 @@
 }
 
 .navbar-landing .navbar-text a:hover {
-   color: #aaa;
+   color: #fff;
 }
 
 .navbar-landing .navbar-nav > li > a {
@@ -19,7 +19,7 @@
 }
 
 .navbar-landing .nav > li > a {
-   color: #ffffff;
+   color: #fff;
 }
 
 .navbar-landing .nav > li > a:hover,
@@ -35,7 +35,7 @@
 }
 .navbar-landing .navbar-brand:hover,
 .navbar-landing .navbar-brand:focus {
-   color: #eee;
+   color: #fff;
 }
 
 /* navbar */
@@ -47,13 +47,11 @@
 .navbar-landing .navbar-nav > .open > a:hover,
 .navbar-landing .navbar-nav > .open > a:focus {
    color: #fff;
-   background-color: #276c3a;
 }
 .navbar-landing .navbar-nav > .active > a,
 .navbar-landing .navbar-nav > .active > a:hover,
 .navbar-landing .navbar-nav > .active > a:focus {
    color: #fff;
-   background-color: #DDEEFF;
 }
 
 
@@ -64,13 +62,11 @@
 
 .navbar-landing .navbar-nav .dropdown .dropdown-menu > li  > a:hover,
 .navbar-landing .navbar-nav .dropdown .dropdown-menu > li  > a:focus{
- background-color: #485C6E;
  color : #fff;
 }
 
 
 
 .navbar-landing .navbar-nav .dropdown .dropdown-menu {
-   background-color: #fff;
    color: #fff;
 }

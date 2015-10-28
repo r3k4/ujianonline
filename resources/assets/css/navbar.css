@@ -9,15 +9,16 @@
 }
 
 .navbar-default .navbar-text a:hover {
-   color: #aaa;
+   color: #222;
 }
 
 .navbar-default .navbar-nav > li > a {
    color: #fff;
+   font-size: 20px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-   color: #eee;
+   color: #b3aaaa;
 }
 
 .navbar-default .nav > li > a {
@@ -26,7 +27,7 @@
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-   color: #eee;
+   color: #b3aaaa;
    background: transparent;
 }
 
@@ -37,25 +38,27 @@
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-   color: #eee;
+   color: #b3aaaa;
 }
 
 /* navbar */
 .navbar-default {
-   background-color: #53bd70;
+   background: transparent;
    color : #fff;
+   border : 0px;
+   padding-top: 2em;
  }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-   color: #fff;
-   background-color: #276c3a;
+   color: #b3aaaa;
+   background: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-   color: #fff;
-   background-color: #276c3a;
+   color: #b3aaaa;
+   background: transparent;
 }
 
 

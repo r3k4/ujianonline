@@ -182,7 +182,7 @@ td,
 th {
   padding: 0; }
 
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/build//css/main-3c14ff286c.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/build//css/main-aa261c635a.css */
 @media print {
   *,
   *:before,
@@ -10964,6 +10964,12 @@ Copyright (c) 2014 Daniel Eden
   height: 4px;
 }
 
+.landing-atas{
+  background: url(/img/header.jpg);
+  background-repeat: no-repeat;
+  height:600px;
+}
+
 .btn-primary{
  background-color: #33414e;
 }
@@ -11152,15 +11158,16 @@ code {
 }
 
 .navbar-default .navbar-text a:hover {
-   color: #aaa;
+   color: #222;
 }
 
 .navbar-default .navbar-nav > li > a {
    color: #fff;
+   font-size: 20px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-   color: #eee;
+   color: #b3aaaa;
 }
 
 .navbar-default .nav > li > a {
@@ -11169,7 +11176,7 @@ code {
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-   color: #eee;
+   color: #b3aaaa;
    background: transparent;
 }
 
@@ -11180,25 +11187,27 @@ code {
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-   color: #eee;
+   color: #b3aaaa;
 }
 
 /* navbar */
 .navbar-default {
-   background-color: #53bd70;
+   background: transparent;
    color : #fff;
+   border : 0px;
+   padding-top: 2em;
  }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-   color: #fff;
-   background-color: #276c3a;
+   color: #b3aaaa;
+   background: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-   color: #fff;
-   background-color: #276c3a;
+   color: #b3aaaa;
+   background: transparent;
 }
 
 

@@ -1,3 +1,9 @@
+.landing-atas{
+  background: url(/img/header.jpg);
+  background-repeat: no-repeat;
+  height:600px;
+}
+
 .btn-primary{
  background-color: #33414e;
 }
