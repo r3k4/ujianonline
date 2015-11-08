@@ -14,6 +14,7 @@
   <body>
 
 @include('layouts.komponen.frontend.nav_atas') 
+@include('layouts.komponen.global.modal') 
   <div class="container animated fadeIn">
     @yield('main')
   </div>

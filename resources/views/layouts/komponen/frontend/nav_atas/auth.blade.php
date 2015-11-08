@@ -24,7 +24,7 @@
 
     <li @if(isset($register_home)) class="active" @endif >
         <a href="{!! route('auth.getRegister') !!}">
-          <i class="fa fa-plus-circle"></i> Register
+          <i class="fa fa-user"></i> Register
         </a>
     </li>
 

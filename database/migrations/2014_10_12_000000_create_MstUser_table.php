@@ -14,7 +14,6 @@ class CreateMstUserTable extends Migration
     {
         Schema::create('mst_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->integer('ref_user_level_id');

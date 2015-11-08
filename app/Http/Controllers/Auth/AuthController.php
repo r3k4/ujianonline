@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
+use App\Helpers\Fungsi;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
+use App\Models\Mst\DataUser;
+use App\Models\Mst\User;
+use App\Models\Ref\UserLevel;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Http\Request;
+use Validator;
 
 class AuthController extends Controller
 {
 
+    protected $user_level;
+    protected $fungsi;
+    protected $mst_user;
+    protected $mst_data_user;
     private $base_view = 'konten.frontend.auth.';   
 
 
@@ -21,8 +29,16 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( UserLevel $user_level, 
+                                 Fungsi $fungsi, 
+                                 User $mst_user,
+                                 DataUser $mst_data_user
+                                )
     {
+        $this->mst_data_user = $mst_data_user;
+        $this->mst_user     = $mst_user;
+        $this->fungsi       = $fungsi;
+        $this->user_level   = $user_level;
         $this->middleware('guest', ['except' => 'getLogout']);
         view()->share('base_view', $this->base_view);
     }
@@ -30,11 +46,27 @@ class AuthController extends Controller
 
     public function getRegister()
     {
+        $jenis_kelamin = ['L' => 'Laki-laki', 'P' => 'Perempuan'];
         $register_home = true;
-        return view($this->base_view.'register.index', compact('register_home'));
+        $ref_user_level = $this->user_level->where('id', '!=', 1)->get();
+        $level = $this->fungsi->get_dropdown($ref_user_level, 'level');
+        $vars = compact('register_home', 'level', 'jenis_kelamin');
+        return view($this->base_view.'register.index', $vars);
     }
 
 
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+        $this->create($request->all());
+        return 'ok';
+    }
 
 
     /**
@@ -46,9 +78,13 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'nama'              => 'required|max:255',
+            'email'             => 'required|email|max:255|unique:mst_user',
+            'password'          => 'required|confirmed|min:6',
+            'jenis_kelamin'     => 'required',
+            'tempat_lahir'      => 'required',
+            'tgl_lahir'         => 'required',
+            'ref_user_level_id' => 'required',
         ]);
     }
 
@@ -60,10 +96,22 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $data_insert_user = [
+            'email'             => $data['email'],
+            'password'          => bcrypt($data['password']),
+            'ref_user_level_id' => $data['ref_user_level_id']
+        ];
+        $insert_user = $this->mst_user->create($data_insert_user);
+
+        $b_user = [
+            'nama'          => $data['nama'],
+            'jenis_kelamin' => $data['jenis_kelamin'],
+            'tgl_lahir'     => $data['tgl_lahir'],
+            'tempat_lahir'  => $data['tempat_lahir'],
+            'mst_user_id'   => $insert_user->id
+        ];
+        $insert_data_user = $this->mst_data_user->create($b_user);
+
+        return 'ok';
     }
 }
