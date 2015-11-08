@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="{{ elixir('css/main.css') }}">
 	<script src="{{ elixir('js/main.js') }}"></script>
+<link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+  
 
   </head>
   <body>
