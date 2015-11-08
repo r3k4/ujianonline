@@ -33,8 +33,21 @@ elixir(function(mix) {
          "plugins/font-awesome/css/font-awesome.css",
          "plugins/animate/animate.css",
          "plugins/pace/pace.css",
-         "custom.css",
-         "navbar.css",
+
+         /* khusus bagian custom */
+         "custom/button.css",
+         "custom/link.css",
+         "custom/spin.css",
+         "custom/sticky-footer.css",
+         "custom/typography.css",
+         /* khusus bagian custom */
+
+         /* khusus navbar-default */
+         "navbar/default.css",
+         "navbar/default-brand.css",
+         "navbar/default-dropdown.css",
+         "navbar/default-text.css",
+         /* end of khusus navbar-default */
 
     ], 'public/css/main.css');
 

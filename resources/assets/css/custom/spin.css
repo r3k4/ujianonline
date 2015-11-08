@@ -1,0 +1,12 @@
+/* agar setiap elemen yg memakai class spin, langsung berputar */
+.spin {
+ -webkit-animation: spin .9s infinite linear;
+ -moz-animation: spin .9s infinite linear;
+ -o-animation: spin .9s infinite linear;
+ animation: spin .9s infinite linear;
+    -webkit-transform-origin: 50% 58%;
+        transform-origin:50% 58%;
+        -ms-transform-origin:50% 58%; /* IE 9 */
+}
+
+

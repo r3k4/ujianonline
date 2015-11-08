@@ -14,7 +14,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace_frontend   = 'App\Http\Controllers\Frontend';
+    protected $namespace_backend    = 'App\Http\Controllers\Backend';
+    protected $namespace_auth       = 'App\Http\Controllers\Auth';
+
+
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -37,8 +41,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes.php');
+        $router->group(['namespace' => $this->namespace_frontend], function ($router) {
+            require app_path('Http/routes/frontend.php');
         });
+
+        $router->group(['namespace' => $this->namespace_backend], function ($router) {
+            require app_path('Http/routes/backend.php');
+        });
+
+        $router->group(['namespace' => $this->namespace_auth], function ($router) {
+            require app_path('Http/routes/auth.php');
+        });
+
     }
 }

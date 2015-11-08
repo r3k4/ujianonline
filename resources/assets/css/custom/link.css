@@ -1,0 +1,47 @@
+@link-color:       @brand-primary;
+@link-color-hover: lighten(@link-color, 90%);
+
+a {
+ color:  #33414e;
+ text-decoration: none;
+ -o-transition:.5s;
+ -ms-transition:.5s;
+ -moz-transition:.5s;
+ -webkit-transition:.5s;
+ /* ...and now for the proper property */
+ transition:.5s;
+
+}
+a:hover {
+   color: #485C6E;
+    text-decoration: none;
+  }
+
+
+@-moz-keyframes spin {
+ from {
+   -moz-transform: rotate(0deg);
+ }
+ to {
+   -moz-transform: rotate(360deg);
+ }
+}
+
+@-webkit-keyframes spin {
+ from {
+   -webkit-transform: rotate(0deg);
+ }
+ to {
+   -webkit-transform: rotate(360deg);
+ }
+}
+
+@keyframes spin {
+ from {
+   transform: rotate(0deg);
+ }
+ to {
+   transform: rotate(360deg);
+ }
+}
+

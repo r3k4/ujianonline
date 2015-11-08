@@ -1,0 +1,12 @@
+
+/* brand atau judul navbar */
+.navbar-default .navbar-brand {
+   color : #416878;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+   color: #004152;
+}
+/* brand atau judul navbar */
+

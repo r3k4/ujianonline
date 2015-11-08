@@ -1,0 +1,16 @@
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a {
+   color: #222;
+}
+
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:hover,
+.navbar-default .navbar-nav .dropdown .dropdown-menu > li  > a:focus{
+ background-color: #21939E;
+ color : #eee;
+}
+
+  
+.navbar-default .navbar-nav .dropdown .dropdown-menu {
+   background-color: #eee;
+   color: #222;
+}

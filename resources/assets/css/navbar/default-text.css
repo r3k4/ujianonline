@@ -1,0 +1,10 @@
+.navbar-default .navbar-text  {
+   color: #eee;
+}
+.navbar-default .navbar-text a {
+   color: #eee;
+}
+
+.navbar-default .navbar-text a:hover {
+   color: #222;
+}
