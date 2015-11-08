@@ -95,7 +95,17 @@ $('#simpan').attr('disabled', 'disabled');
 			pesan_sukses = '<h1>Pendaftaran telah berhasil</h1><hr>silahkan menunggu terlebih dahulu persetujuan dari admin untuk aktivasi.'
 			$('#myModal').modal('show');
 			$('.modal-body').html('<div class="alert alert-success">'+pesan_sukses+'</div>')
-			 //window.location.reload();
+
+			$('#nama').val('');
+			$('#jenis_kelamin').val('');
+			$('#email').val('');
+			$('#tempat_lahir').val('');
+			$('#tgl_lahir').val('');
+			$('#ref_user_level_id').val('');
+			$('#password').val('');
+			$('#password_confirmation').val('');
+
+
 		}
 	})
 })
