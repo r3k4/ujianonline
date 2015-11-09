@@ -1,15 +1,12 @@
 <?php 
 
+Route::group(['prefix' => 'backend'], function(){
 
-Route::group(['middleware' => 'auth'], function(){
+	require __DIR__.'/backend/myprofile.php';
+	require __DIR__.'/backend/home.php';
 
-	get('/backend', [
-		'as'	=> 'backend.home.index',
-		'uses'	=> 'HomeController@index',
-	]);
-	
 
 });
 
 
-
+ 

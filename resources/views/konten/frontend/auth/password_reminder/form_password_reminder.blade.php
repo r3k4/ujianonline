@@ -1,6 +1,6 @@
 <div class="panel panel-info">
  <div class="panel-heading">
- 	<h1>
+ 	<h1 class="animated fadeInDown header_text">
  		<i class='fa fa-lock'></i> Reset Password 
  	</h1>
  </div>

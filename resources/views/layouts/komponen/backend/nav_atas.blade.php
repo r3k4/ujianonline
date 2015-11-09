@@ -15,13 +15,7 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            @if(Auth::check())
-            <li>
-              <a href="{!! route('backend.home.index') !!}">Dashboard</a>              
-            </li>
-              @else 
-                @include('layouts.komponen.frontend.nav_atas.auth')              
-              @endif
+            @include('layouts.komponen.backend.nav_atas.auth')
           </ul>
 
 

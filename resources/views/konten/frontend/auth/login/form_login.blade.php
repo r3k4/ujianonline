@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-info animated fadeInDown ">
  <div class="panel-heading">
- 	<h1>
+ 	<h1 class="header_text">
  		<i class='fa fa-lock'></i> Login Sistem
  	</h1>
  </div>

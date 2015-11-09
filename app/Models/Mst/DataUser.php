@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 
 class DataUser extends Eloquent{
+	public static $jenis_kelamin = ['L' => 'Laki-laki', 'P' => 'Perempuan'];
 	protected $table = 'mst_data_user';
     protected $fillable = [ 'nama', 'jenis_kelamin', 
     						'tgl_lahir', 'tempat_lahir',

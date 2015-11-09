@@ -40,6 +40,8 @@ class User extends Model implements AuthenticatableContract,
 
 
     public function data_user(){
-        return $this->hasOne(DataUser::class);
+        return $this->hasOne(DataUser::class, 'mst_user_id');
     }
+
+
 }

@@ -2,10 +2,8 @@
 @section('main')
 
 <div class="row">
-	<h1 class="animated fadeInDown">
-		<span class='pull-right'>
+	<h1 class="animated fadeInDown header_text">
 			<i class='fa fa-user'></i> Pendaftaran User	
-		</span>
 	</h1>	
 </div>
 

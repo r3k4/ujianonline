@@ -6,7 +6,7 @@ html {
 }
 body {
  /* Margin bottom by footer height */
- margin-bottom: 100px;
+ margin-bottom: 30px;
 }
 .footer {
  position: absolute;
@@ -15,7 +15,6 @@ body {
  /* Set the fixed height of the footer here */
 
  background-color: #ddd;
-  background-image: url("../../img/pat01.jpg");
 }
 
 
@@ -24,7 +23,7 @@ body {
 /* Not required for template or sticky footer method. */
 
 body > .container {
- padding: 20px 15px 0;
+ padding: 10px 15px 0;
 }
 .container .text-muted {
  margin: 20px 0;
@@ -34,7 +33,7 @@ body > .container {
  padding-right: 15px;
  padding-left: 15px;
  background-color: #ddd;
-background-image: url("../../img/pat01.jpg");
+
 }
 
 
