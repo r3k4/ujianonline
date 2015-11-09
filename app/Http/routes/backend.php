@@ -1,14 +1,15 @@
 <?php 
 
 
-get('/home', function(){
-	if(\Session::has('status')){
-		$oke = \Session::get('status');
-	}else{
-		$oke = 'kosong';
-	}
+Route::group(['middleware' => 'auth'], function(){
 
+	get('/backend', [
+		'as'	=> 'backend.home.index',
+		'uses'	=> 'HomeController@index',
+	]);
+	
 
-
-	return $oke;
 });
+
+
+
