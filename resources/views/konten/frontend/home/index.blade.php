@@ -10,7 +10,7 @@
 		</span>
 
 	</h1>
-    <h1 class="landing_text_utama"> Sistem Informasi Bank Soal & Ujian Online</h1>
+    <h1 class="landing_text_utama"> Sistem Informasi <br> Bank Soal & Ujian Online</h1>
 
       The safest and easiest way for educators to connect and collaborate with students, 
       parents, and each other.	

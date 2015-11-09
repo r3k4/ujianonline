@@ -1,28 +1,40 @@
  
-<div class="col-md-6">
 		<div class="form-group">
 			<label for="">Nama : </label>
 			<input type="text" class="form-control" id="nama" placeholder="Nama ...">
 		</div>
 
-		<div class="form-group">
-			{!! Form::label('jenis_kelamin', 'Jenis Kelamin :') !!}  
-			{!! Form::select('jenis_kelamin', $jenis_kelamin, 'L', ['id' => 'jenis_kelamin', 'class' => 'form-control']) !!}
-		</div> 
 
 		<div class="form-group">
-			{!! Form::label('tempat_lahir', 'Tempat Lahir : ') !!}
-			{!! Form::text('tempat_lahir', '', ['id' => 'tempat_lahir', 'class' => 'form-control', 'placeholder' => 'tempat lahir...']) !!}
-		</div>
-		<div class="form-group">
-			{!! Form::label('tgl_lahir', 'Tgl Lahir') !!}
-			{!! Form::date('tgl_lahir', \Carbon\Carbon::now(), ['id' => 'tgl_lahir']); !!}
+			{!! Form::label('tempat_lahir', 'Tempat, Tanggal Lahir : ') !!} <br>
+			<div class="row">
+				<div class="col-md-8">
+					{!! Form::text('tempat_lahir', '', ['id' => 'tempat_lahir',  'placeholder' => 'tempat lahir...', 'class' => 'form-control']) !!}					 
+				</div>	
+				<div class="col-md-4">
+					{!! Form::date('tgl_lahir', \Carbon\Carbon::now(), ['id' => 'tgl_lahir', 'class' => 'form-control']); !!}					
+				</div>			
+			</div>
 		</div>
 
-</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::label('jenis_kelamin', 'Jenis Kelamin :') !!}  
+					{!! Form::select('jenis_kelamin', $jenis_kelamin, 'L', ['id' => 'jenis_kelamin', 'class' => 'form-control']) !!}
+				</div> 				
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::label('ref_user_level_id', 'Mendaftar sebagai ?') !!} <br>
+					{!! Form::select('ref_user_level_id', $level, null, ['id' => 'ref_user_level_id', 'class' => 'form-control']) !!}
+				</div> 				
+			</div>
+		</div>
+
 
  
-<div class="col-md-6">
 		<div class="form-group">
 			{!! Form::label('email', 'Alamat Email : ') !!}
 			{!! Form::text('email', '', ['id' => 'email', 'class' => 'form-control', 'placeholder' => 'alamat email...']) !!}
@@ -38,11 +50,8 @@
 		</div>
 
 
-		<div class="form-group">
-			{!! Form::label('ref_user_level_id', 'Mendaftar sebagai ?') !!} <br>
-			{!! Form::select('ref_user_level_id', $level, ['id' => 'ref_user_level_id', 'class' => 'form-control', 'placeholder' => 'tempat lahir...']) !!}
-		</div> 
-</div>
+
+ 
 
 <button id="daftar"  class="btn btn-success form-control"> <i class='fa fa-check'></i> Mendaftar</button>
 

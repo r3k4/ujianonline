@@ -1,10 +1,14 @@
 @extends('layouts.frontend')
 @section('main')
 
+<div class="row">
+	<h1 class="animated fadeInDown">
+		<span class='pull-right'>
+			<i class='fa fa-user'></i> Pendaftaran User	
+		</span>
+	</h1>	
+</div>
 
-<h1 class="animated fadeInDown">
-	<i class='fa fa-user'></i> Pendaftaran User
-</h1>
 <hr>
 
 <div class="row">
