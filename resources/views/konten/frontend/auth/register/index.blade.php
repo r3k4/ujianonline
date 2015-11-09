@@ -9,10 +9,10 @@
 
 <div class="row">
 	<div class="col-md-6">
-		@include($base_view.'register.form_register')		
+		@include($base_view.'register.info')
 	</div>
 	<div class="col-md-6">
-		@include($base_view.'register.info')
+		@include($base_view.'register.form_register')		
 	</div>
 	
 </div>

@@ -10,7 +10,7 @@ use App\Models\Ref\UserLevel;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
-use Validator;
+use Validator, Auth;
 
 class AuthController extends Controller
 {
@@ -19,7 +19,8 @@ class AuthController extends Controller
     protected $fungsi;
     protected $mst_user;
     protected $mst_data_user;
-    private $base_view = 'konten.frontend.auth.';   
+    private $base_view = 'konten.frontend.auth.'; 
+    protected $redirectPath = '/backend';  
 
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
@@ -42,6 +43,48 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
         view()->share('base_view', $this->base_view);
     }
+
+
+    public function getLogin(Request $request)
+    {
+        //dd($request->session('errors'));
+        $login_home = true;
+        $vars = compact('login_home');
+        return view($this->base_view.'login.index', $vars);
+    }
+
+
+
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->loginUsername() => 'required', 'password' => 'required',
+        ]);
+
+        $throttles = $this->isUsingThrottlesLoginsTrait();
+
+        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
+        }
+
+        $credentials = $this->getCredentials($request);
+        $credentials = array_add($credentials, 'aktif', 1);
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            return $this->handleUserWasAuthenticated($request, $throttles);
+        }
+
+        if ($throttles) {
+            $this->incrementLoginAttempts($request);
+        }
+
+        return redirect($this->loginPath())
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]);
+    }
+
 
 
     public function getRegister()

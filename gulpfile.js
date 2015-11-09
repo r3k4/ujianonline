@@ -35,6 +35,7 @@ elixir(function(mix) {
          "plugins/pace/pace.css",
 
          /* khusus bagian custom */
+         "custom/custom.css",
          "custom/button.css",
          "custom/link.css",
          "custom/spin.css",

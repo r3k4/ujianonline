@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\Password;
 
 class PasswordController extends Controller
 {
@@ -20,6 +23,9 @@ class PasswordController extends Controller
 
     use ResetsPasswords;
 
+
+    private $base_view = 'konten.frontend.auth.password_reminder.';
+
     /**
      * Create a new password controller instance.
      *
@@ -28,5 +34,86 @@ class PasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        view()->share('base_view', $this->base_view);
     }
+
+
+
+    public function getEmail()
+    {
+        $password_home = true;
+        return view($this->base_view.'index', compact('password_home'));
+    }
+
+
+    public function postEmail(Request $request)
+    {
+        $this->validate($request, ['email' => 'required|email']);
+
+        $response = Password::sendResetLink($request->only('email'), function (Message $message) {
+            $message->subject($this->getEmailSubject());
+        });
+
+        switch ($response) {
+            case Password::RESET_LINK_SENT:
+                return redirect()->back()->with('status', trans($response));
+
+            case Password::INVALID_USER:
+                return redirect()->back()->withErrors(['email' => trans($response)]);
+        }
+    }
+
+
+
+    public function postReset(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $credentials = $request->only(
+            'email', 'password', 'password_confirmation', 'token'
+        );
+
+        $response = Password::reset($credentials, function ($user, $password) {
+            $this->resetPassword($user, $password);
+        });
+
+        switch ($response) {
+            case Password::PASSWORD_RESET:
+                return redirect()->route('auth.password_reminder.getEmail')->with('status', trans($response));
+                //return redirect($this->redirectPath())->with('status', trans($response));
+
+            default:
+                return redirect()->back()
+                            ->withInput($request->only('email'))
+                            ->withErrors(['email' => trans($response)]);
+        }
+    }
+
+
+
+    protected function resetPassword($user, $password)
+    {
+        $user->password = bcrypt($password);
+        $user->save();
+        //return redirect()->route('auth.password_reminder.getEmail');
+        //Auth::login($user);
+    }
+
+
+
+    public function getReset($token = null)
+    {
+        if (is_null($token)) {
+            throw new NotFoundHttpException;
+        }
+
+        return view($this->base_view.'reset_password')->with('token', $token);
+    }
+
+
+
 }

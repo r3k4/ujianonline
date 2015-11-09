@@ -21,7 +21,7 @@
     @yield('main')
   </div>
 
-
+@include('layouts.komponen.frontend.footer')
 
   </body>
 </html>

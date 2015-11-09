@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\User::class,
+    'model' => App\Models\Mst\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -59,8 +59,8 @@ return [
     */
 
     'password' => [
-        'email' => 'emails.password',
-        'table' => 'password_resets',
+        'email' => 'konten.frontend.auth.password_reminder.password_reset_link',
+        'table' => 'mst_password_resets',
         'expire' => 60,
     ],
 

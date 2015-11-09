@@ -27,3 +27,26 @@ Route::post('auth/register', [
 	'uses'	=> 'AuthController@postRegister'
 ]);
 
+
+
+
+// Password reset link request routes...
+Route::get('password_reminder/email', [
+	'as'	=> 'auth.password_reminder.getEmail',
+	'uses'	=> 'PasswordController@getEmail'
+]);
+Route::post('password_reminder/email', [
+	'as'	=> 'auth.password_reminder.postEmail',
+	'uses'	=> 'PasswordController@postEmail'
+]);
+
+
+// Password reset routes...
+Route::get('password_reminder/reset/{token}', [
+	'as'	=> 'auth.password_reminder.getReset',
+	'uses'	=> 'PasswordController@getReset'
+	]);
+Route::post('password_reminder/reset', [
+	'as'	=> 'auth.password_reminder.postReset',
+	'uses'	=> 'PasswordController@postReset'
+]);
