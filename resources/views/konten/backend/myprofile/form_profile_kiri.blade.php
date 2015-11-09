@@ -5,7 +5,7 @@
 
 
 		<div class="form-group">
-			{!! Form::label('tempat_lahir', 'Tempat, Tanggal Lahir : ') !!} <br>
+			{!! Form::label('tempat_lahir', 'Tempat, Tanggal Lahir (mm/dd/yyyy) : ') !!} <br>
 			<div class="row">
 				<div class="col-md-5">
 					{!! Form::text('tempat_lahir', Auth::user()->data_user->tempat_lahir, ['id' => 'tempat_lahir',  'placeholder' => 'tempat lahir...', 'class' => 'form-control']) !!}					 

@@ -3,7 +3,7 @@
   <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" class='img-circle avatar' alt='...' >  
 </div>
 
-   {{ Auth::user()->data_user->nama }}
+   {{ Auth::user()->nama }}
     <br>
-     <hr>
+     <hr style="margin-top:0px;">
 </li>

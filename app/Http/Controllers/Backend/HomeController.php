@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Helpers\Fungsi;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -19,10 +19,10 @@ class HomeController extends Controller
 	}
    
 
-	public function index()
+	public function index(Fungsi $fungsi)
 	{
 		$backend_home_index = true;
-		$vars = compact('backend_home_index');
+		$vars = compact('backend_home_index', 'fungsi');
 		return view($this->base_view.'index', $vars);
 	}
 

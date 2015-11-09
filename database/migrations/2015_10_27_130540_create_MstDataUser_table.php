@@ -15,7 +15,6 @@ class CreateMstDataUserTable extends Migration
         Schema::create('mst_data_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mst_user_id');
-            $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->enum('jenis_kelamin', ['L', 'P']);

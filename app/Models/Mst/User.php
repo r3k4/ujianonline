@@ -3,6 +3,7 @@
 namespace App\Models\Mst;
 
 use App\Models\Mst\DataUser;
+use App\Models\Ref\UserLevel;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -29,7 +30,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['email', 'password', 'ref_user_level_id', 'aktif'];
+    protected $fillable = ['nama', 'email', 'password', 'ref_user_level_id', 'aktif'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -43,5 +44,23 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne(DataUser::class, 'mst_user_id');
     }
 
+
+    public function ref_user_level(){
+       return $this->belongsTo(UserLevel::class, 'ref_user_level_id');
+    }
+
+
+
+    public function getAllUser($request, $limit){
+        if(count($request->search)){
+            $q = $this->with('ref_user_level', 'data_user')
+                ->where('nama', 'like', '%'.$request->search.'%')
+                ->paginate($limit);            
+        }else{
+            $q = $this->with('ref_user_level', 'data_user')
+                ->paginate($limit);
+        }
+        return $q;
+    }
 
 }

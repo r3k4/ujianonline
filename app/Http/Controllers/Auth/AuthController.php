@@ -140,6 +140,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $data_insert_user = [
+            'nama'              => $data['nama'],
             'email'             => $data['email'],
             'password'          => bcrypt($data['password']),
             'ref_user_level_id' => $data['ref_user_level_id']
@@ -147,7 +148,6 @@ class AuthController extends Controller
         $insert_user = $this->mst_user->create($data_insert_user);
 
         $b_user = [
-            'nama'          => $data['nama'],
             'jenis_kelamin' => $data['jenis_kelamin'],
             'tgl_lahir'     => $data['tgl_lahir'],
             'tempat_lahir'  => $data['tempat_lahir'],
