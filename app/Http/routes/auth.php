@@ -28,6 +28,11 @@ Route::post('auth/register', [
 ]);
 
 
+Route::get('auth/login_facebook', [
+	'as'		=> 'auth.getLoginFacebook',
+	'uses'		=> 'AuthController@getLoginFacebook'
+]);
+
 
 
 // Password reset link request routes...

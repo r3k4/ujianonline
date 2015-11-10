@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '190376214633391',
+        'client_secret' => '453abb5e5e713cfd3ee41e9a3369d3f4',
+        'redirect' => 'http://ujianonline.reka.com/auth/login_facebook',
+    ],    
+
 ];

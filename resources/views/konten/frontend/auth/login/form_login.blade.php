@@ -23,23 +23,60 @@
   	{!! Form::password('password',  ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'password...']) !!}
   </div>
 
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" name="remember"> Remember Me
-    </label>
+<div class="row">
+  <div class='col-md-6'>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="remember"> Ingat Saya
+      </label>
+    </div>    
   </div>
+  <div class="col-md-6">
+      <div class="forgot-password text-right">
+        <a href="{!! route('auth.password_reminder.getEmail') !!}">
+          Lupa password ?
+        </a>
+      </div>      
+  </div>  
+</div>
+
+
+
+<hr>
 
 
     <div class="form-group">
-    <div class=" col-md-6">
-      <button type="submit" class="btn btn-primary form-control"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Sign In</button>
-    </div>
-    <div class="col-sm-3">
-      <div class="forgot-password text-right"><a href="{!! route('auth.password_reminder.getEmail') !!}">Lupa password?</a></div>
-    </div>
+      <button type="submit" class="btn btn-info form-control">
+          <i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login
+        </button>
+
+        <div style="margin-top:1em;margin-bottom:1em;" class="text-center">
+          --------------- atau ----------------          
+        </div>
+
+        <a class="btn btn-primary form-control" href="{!! route('auth.getLoginFacebook') !!}"> 
+          <i class="fa fa-facebook"></i> Login dengan facebook
+        </a>
+
+ 
   </div>
 
   {!! Form::close() !!}
 
   </div>
 </div>
+
+
+<hr>
+
+
+
+      <div class="text-center">
+      <h2 style="text-decoration: underline;">
+        <a href="{!! route('auth.getRegister') !!}">
+          Buat Akun Baru
+        </a>        
+      </h2>
+
+      </div>     
+ 

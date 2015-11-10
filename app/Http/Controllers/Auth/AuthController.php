@@ -86,6 +86,33 @@ class AuthController extends Controller
     }
 
 
+    public function getLoginFacebook()
+    {
+        $provider = \Socialite::with('facebook');
+        if (\Input::has('code'))
+        {
+            $user = $provider->user();
+            $check_email = $this->mst_user->where('email', '=', $user->email)->first();
+            if(count($check_email)>0){
+                //jika email ada di db, forced to login
+                \Auth::loginUsingId($check_email->id);
+                \Log::info('login using id');
+                return redirect()->intended($this->redirectPath());
+            }else{
+                \Log::info('gagal login, user tdk ditemukan');
+                    return redirect()
+                                ->back()
+                                ->withErrors([
+                                    'email' => 'User tidak ditemukan.',
+                                ]);
+            }
+        } else {
+             \Log::info('gagal login');
+            return $provider->redirect();
+        }        
+    }
+
+
 
     public function getRegister()
     {
