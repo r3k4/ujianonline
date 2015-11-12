@@ -14,9 +14,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-          <ul class="nav navbar-nav navbar-right">
-            @include('layouts.komponen.backend.nav_atas.auth')
-          </ul>
+<p class="navbar-text navbar-right">
+  Signed in as 
+    <b>{!! Auth::user()->nama !!}</b>
+ |      
+   <a style="font-weight: bold;" href="{!! route('auth.getLogout') !!}">
+        <i class="fa fa-power-off"></i> Log Out
+      </a>
+</p>
+
+ 
 
 
         </div>
