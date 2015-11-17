@@ -1,6 +1,6 @@
 		<div class="form-group">
 			<label for="">Nama : </label>
-			<input value="{!! Auth::user()->data_user->nama !!}" type="text" class="form-control" id="nama" placeholder="Nama ...">
+			<input value="{!! Auth::user()->nama !!}" type="text" class="form-control" id="nama" placeholder="Nama ...">
 		</div>
 
 

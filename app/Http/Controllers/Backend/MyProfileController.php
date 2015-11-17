@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\MyProfile\UpdateProfile;
 use App\Models\Mst\DataUser;
+use App\Models\Mst\User;
 use Illuminate\Http\Request;
 
 class MyProfileController extends Controller
@@ -30,8 +31,13 @@ class MyProfileController extends Controller
 
     public function update_profile(UpdateProfile $request)
     {
+        //update tabel mst_user
+        $u = User::findOrFail(\Auth::user()->id);
+        $u->nama = $request->nama;
+        $u->save();
+
+        //update tabel mst_data_user
         $du = $this->data_user->find(\Auth::user()->data_user->id);
-        $du->nama = $request->nama;
         $du->tempat_lahir = $request->tempat_lahir;
         $du->tgl_lahir = $request->tgl_lahir;
         $du->jenis_kelamin = $request->jenis_kelamin;
