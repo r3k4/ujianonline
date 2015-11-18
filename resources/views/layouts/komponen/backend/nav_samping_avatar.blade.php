@@ -2,8 +2,5 @@
 <div class="row">
   <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" class='img-circle avatar' alt='...' >  
 </div>
-
-   {{ Auth::user()->nama }}
-    <br>
-     <hr style="margin-top:0px;">
+     <hr style="margin-bottom: 5px;margin-top: 5px;">
 </li>

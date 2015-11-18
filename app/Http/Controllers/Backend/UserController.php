@@ -9,7 +9,6 @@ use App\Http\Requests\User\updateUser;
 use App\Models\Mst\DataUser;
 use App\Models\Mst\User;
 use App\Models\Ref\UserLevel;
-use Gate;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

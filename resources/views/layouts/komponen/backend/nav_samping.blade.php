@@ -23,6 +23,16 @@
 
 
 
+
+
+    @can('showMapel', \Auth::user())
+         <li @if(isset($backend_mapel_index)) class="active" @endif >
+            <a href="{{ route('backend.mapel.index') }}">
+                <i class='fa fa-th-list'></i> Mata Pelajaran
+            </a>
+        </li>
+    @endcan 
+
         
         
         <li @if(isset($backend_myprofile_home)) class="active" @endif>
