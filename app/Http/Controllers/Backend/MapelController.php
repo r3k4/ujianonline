@@ -26,7 +26,7 @@ class MapelController extends Controller
 
     public function index()
     {
-        $this->authorize('showMapel', \Auth::user()); //acl
+        $this->authorize('canShow', \Auth::user()); //acl
         $backend_mapel_index = true;    
         $mapel = $this->mapel->paginate(10);
         $vars = compact('backend_mapel_index', 'mapel');	

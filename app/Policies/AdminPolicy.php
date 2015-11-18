@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Models\Mst\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MapelPolicy
+class AdminPolicy
 {
     use HandlesAuthorization;
 
@@ -16,33 +16,33 @@ class MapelPolicy
      */
     public function __construct()
     {
-
+        //
     }
 
-    public function insertMapel(User $user)
+
+    public function canInsert(User $user)
     {
         return $user->ref_user_level_id == 1;
     }
 
-    public function updateMapel(User $user)
+    public function canUpdate(User $user)
     {
         return $user->ref_user_level_id == 1;
     }
 
-    public function deleteMapel(User $user)
+    public function canDelete(User $user)
     {
         return $user->ref_user_level_id == 1;
     }
 
-    public function showMapel(User $user)
+    public function canShow(User $user)
     {
         return $user->ref_user_level_id == 1;
     }
 
-    public function editMapel(User $user)
+    public function canEdit(User $user)
     {
         return $user->ref_user_level_id == 1;
     }
-
 
 }

@@ -7,7 +7,7 @@
 <hr style="margin-top:0px;">
 
 
-<div class="col-md-7">
+<div class="col-md-8">
 	@include($base_view.'biodata')	
 </div>
 

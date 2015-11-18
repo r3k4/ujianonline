@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function index(Request $request, User $mst_user)
     {
-        $this->authorize('showUser', \Auth::user()); //acl
+        $this->authorize('canShow', \Auth::user()); //acl
     	$backend_user_index = true;
     	$users = $mst_user->getAllUser($request, $limit=10);
     	$vars = compact('backend_user_index', 'users');
@@ -52,7 +52,7 @@ class UserController extends Controller
 
     public function edit($id, User $mst_user)
     {
-        $this->authorize('editUser', \Auth::user());
+        $this->authorize('canEdit', \Auth::user());
         $level = $this->fungsi->get_dropdown(UserLevel::all(), 'level');        
         $user = $mst_user->findOrFail($id);
         $jenis_kelamin = DataUser::$jenis_kelamin;

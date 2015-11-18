@@ -13,7 +13,7 @@
         </li>
 
 
-    @can('showUser', \Auth::user())
+    @can('canShow', \Auth::user())
          <li @if(isset($backend_user_index)) class="active" @endif >
             <a href="{{ route('backend.user.index') }}">
                 <i class='fa fa-users'></i> User
@@ -25,7 +25,7 @@
 
 
 
-    @can('showMapel', \Auth::user())
+    @can('canShow', \Auth::user())
          <li @if(isset($backend_mapel_index)) class="active" @endif >
             <a href="{{ route('backend.mapel.index') }}">
                 <i class='fa fa-th-list'></i> Mata Pelajaran
