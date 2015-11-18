@@ -13,9 +13,10 @@ class CreateRefKelasTable extends Migration
     public function up()
     {
         Schema::create('ref_kelas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama'); //nama kelas
-            $tabel->integer('mst_user_id'); // pengajar atau guru yg membuat kelas
+            $table->increments('id'); //dari ini nanti bisa digunakan sebagai code untuk invite siswa masuk ke grup kelas
+            $table->string('nama'); // nama kelas
+            $table->integer('ref_mapel_id'); //relasi ke tabel ref_mapel
+            $table->integer('mst_user_id'); // pengajar atau guru yg membuat kelas
             $table->enum('is_open', [0, 1])->default(1); //status kelas, masih bs menerima request siswa br atau tdk
             $table->string('keterangan'); //keterangan mengenai kelas
             $table->timestamps();
