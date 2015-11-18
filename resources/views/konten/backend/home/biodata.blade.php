@@ -17,6 +17,16 @@
 			</td>
 		</tr>
 
+
+		<tr>
+			<td>
+				Email
+			</td>
+			<td>
+				{!! Auth::user()->email !!}
+			</td>
+		</tr>
+
 		<tr>
 			<td>
 				TTL 
