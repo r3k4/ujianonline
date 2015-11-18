@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRefSoalTable extends Migration
+class CreateMstTopikSoalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateRefSoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('ref_soal', function (Blueprint $table) {
+        Schema::create('mst_topik_soal', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama'); // nama atau judul soal
+            $table->string('nama'); // nama atau judul bank soal
             $table->integer('waktu_pengerjaan'); //dlm satuan menit
             $table->integer('mst_user_id');
             $table->integer('mst_kelas_id');
@@ -31,6 +31,6 @@ class CreateRefSoalTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ref_soal');
+        Schema::drop('mst_topik_soal');
     }
 }

@@ -147,6 +147,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Vinkla\Hashids\HashidsServiceProvider::class,
+
 
     ],
 
@@ -201,6 +203,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,     
         'Gravatar'  => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,  
         'Socialite' => Laravel\Socialite\Facades\Socialite::class, 
+        'Hashids'   => Vinkla\Hashids\Facades\Hashids::class,
 
     ],
 
