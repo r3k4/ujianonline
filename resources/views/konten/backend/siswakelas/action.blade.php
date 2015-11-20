@@ -1,7 +1,7 @@
 <i 
 	class='fa fa-times'
 	data-toggle='tooltip'
-	title='berhenti mengikuti kelas ini'
+	title='berhenti/batalkan mengikuti kelas ini'
 	id='stop{!! $list->id !!}'
 	style='cursor:pointer;'
 ></i>
