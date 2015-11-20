@@ -33,6 +33,29 @@
         </li>
     @endcan 
 
+
+
+
+@if(Auth::user()->ref_user_level_id == 2)
+         <li @if(isset($backend_kelas_index)) class="active" @endif >
+            <a href="{{ route('backend.kelas.index') }}">
+                <i class='fa fa-th-list'></i> Kelas
+            </a>
+        </li>
+@endif
+
+
+
+
+@if(Auth::user()->ref_user_level_id == 3)
+         <li @if(isset($backend_siswakelas_index)) class="active" @endif >
+            <a href="{{ route('backend.siswakelas.index') }}">
+                <i class='fa fa-th-list'></i> Kelas
+            </a>
+        </li>
+@endif
+
+
         
         
         <li @if(isset($backend_myprofile_home)) class="active" @endif>

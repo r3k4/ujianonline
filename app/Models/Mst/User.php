@@ -63,4 +63,10 @@ class User extends Model implements AuthenticatableContract,
         return $q;
     }
 
+
+    public function owns($related)
+    {   
+        return $this->id == $related->mst_user_id;
+    }
+
 }

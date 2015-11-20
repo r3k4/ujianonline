@@ -1,6 +1,6 @@
 <?php 
 
-Route::group(['middleware' => ['auth' ]], function(){
+Route::group(['middleware' => ['auth', 'hanya_admin' ]], function(){
 
 	get('user', [
 		'as'	=> 'backend.user.index',
