@@ -16,7 +16,7 @@
 		<tr>
 			<td class="text-center">{!! $no !!}</td>
 			<td>{!! $list->nama !!}</td>
-			<td>{!! Hashids::encode($list->id); !!}</td>
+			<td>{!! Hashids::encode($list->id) !!}</td>
 			<td>{!! $list->ref_mapel->nama !!}</td>
 			<td class="text-center">
 				<span class="label label-success"> 
