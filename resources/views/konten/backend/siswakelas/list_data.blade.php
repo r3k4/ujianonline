@@ -5,6 +5,7 @@
 			<th>Nama Kelas</th>
 			<th>Nama Pengajar</th>
 			<th>Mata Pelajaran</th>
+			<th width="100px">Status</th>
 			<th width="100px" class="text-center">Action</th>
 		</tr>
 	</thead>
@@ -51,6 +52,16 @@
 				@endif					
 
 			</td>
+			<td>
+				@if($list->is_aktif == 1)
+					<span class='label label-success'>aktif</span>
+				@else 
+					<span class='label label-warning'>
+						belum aktif <i class='fa fa-question-circle' data-toggle='tooltip' title='masih menunggu konfirmasi dari pengajar..'></i> 
+					</span>
+				@endif
+			</td>
+
 			<td class="text-center">
 					@include($base_view.'action')
 			</td>
