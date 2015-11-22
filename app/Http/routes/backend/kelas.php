@@ -22,6 +22,16 @@ Route::group(['middleware' => ['auth', 'hanya_guru']], function(){
 		'uses'	=> 'KelasGuruController@aktivasi',
 	]);
 
+	post('kelas/regenerate_kode_kelas', [
+		'as'	=> 'backend.kelas.regenerate_kode_kelas',
+		'uses'	=> 'KelasGuruController@regenerate_kode_kelas',
+	]);
+
+	post('kelas/delete', [
+		'as'	=> 'backend.kelas.delete',
+		'uses'	=> 'KelasGuruController@delete',
+	]);
+
 
 });
 

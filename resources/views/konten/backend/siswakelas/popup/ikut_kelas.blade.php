@@ -1,6 +1,8 @@
 <h3>Ikut Kelas </h3>
 <hr>
 
+<div id="pesan"></div>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="form-group">
@@ -9,7 +11,7 @@
 		</div>	
 
 
-		<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> SIMPAN</button>
+		<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> IKUT KELAS</button>
 
 	</div>
 </div>
@@ -37,13 +39,20 @@ $('#simpan').attr('disabled', 'disabled');
         $.each(datajson, function( index, value ) {
        		$('#pesan').append(index + ": " + value+"<br>")
           });
-
-		      //    alert('error! terjadi kesalahan pada sisi server!')
 		},
 		success:function(ok){
 			$('#simpan').removeAttr('disabled');
-			 //window.location.reload();
-			// $('.modal-body').load('')
+			if(ok == ''){
+				pesan_error = '<h3> kode kelas salah! </h3>';
+				$('#pesan')
+					.addClass('alert alert-danger animated shake')
+					.html('<div class="alert alert-danger">'+pesan_error+'</div>');
+			}else if(ok == '0'){
+				pesan_error = '<h3> kelas sudah ditutup! </h3>';
+				$('#pesan')
+					.addClass('alert alert-danger animated shake')
+					.html('<div class="alert alert-danger">'+pesan_error+'</div>');
+			}
 		}
 	})
 })

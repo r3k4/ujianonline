@@ -48,7 +48,10 @@ class KelasGuruController extends Controller
 	public function insert(createKelasRequest $request)
 	{
 		$insert_kelas = $this->kelas->create($request->except('_token'));
-		return $insert_kelas;
+		$k = $this->kelas->findOrFail($insert_kelas->id);
+		$k->kode_kelas = \Hashids::encode($insert_kelas->id.''.date('YmdHis'));
+		$k->save();
+		return $k;
 	}
 
 
@@ -63,6 +66,22 @@ class KelasGuruController extends Controller
 			$k->save();			
 		}
 		return $k;
+	}
+
+
+	public function regenerate_kode_kelas(Request $request)
+	{
+		$k = $this->kelas->findOrFail($request->id);
+		$k->kode_kelas = \Hashids::encode($request->id.''.date('YmdHis'));
+		$k->save();
+		return $k;
+	}
+
+
+	public function delete(Request $request){
+		$k = $this->kelas->findOrFail($request->id);
+		$k->delete();
+		return 'ok';
 	}
 
 
