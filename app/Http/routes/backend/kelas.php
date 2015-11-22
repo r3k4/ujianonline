@@ -17,6 +17,16 @@ Route::group(['middleware' => ['auth', 'hanya_guru']], function(){
 		'uses'	=> 'KelasGuruController@insert',
 	]);
 
+	get('kelas/edit/{id}', [
+		'as'	=> 'backend.kelas.edit',
+		'uses'	=> 'KelasGuruController@edit',
+	]);
+
+	post('kelas/update', [
+		'as'	=> 'backend.kelas.update',
+		'uses'	=> 'KelasGuruController@update',
+	]);
+
 	post('kelas/aktivasi', [
 		'as'	=> 'backend.kelas.aktivasi',
 		'uses'	=> 'KelasGuruController@aktivasi',
@@ -30,6 +40,26 @@ Route::group(['middleware' => ['auth', 'hanya_guru']], function(){
 	post('kelas/delete', [
 		'as'	=> 'backend.kelas.delete',
 		'uses'	=> 'KelasGuruController@delete',
+	]);
+
+	get('kelas/view_detail_kelas/{id}', [
+		'as'	=> 'backend.kelas.view_detail_kelas',
+		'uses'	=> 'KelasGuruController@view_detail_kelas',
+	]);
+
+	get('kelas/siswa_kelas/{id}', [
+		'as'	=> 'backend.kelas.siswa_kelas',
+		'uses'	=> 'KelasGuruController@siswa_kelas',
+	]);
+
+	post('kelas/do_join_kelas', [
+		'as'	=> 'backend.kelas.do_join_kelas',
+		'uses'	=> 'KelasGuruController@do_join_kelas',
+	]);
+
+	post('kelas/hapus_siswa_kelas', [
+		'as'	=> 'backend.kelas.hapus_siswa_kelas',
+		'uses'	=> 'KelasGuruController@hapus_siswa_kelas',
 	]);
 
 

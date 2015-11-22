@@ -3,6 +3,8 @@
 namespace App\Models\Mst;
 
 use App\Models\Mst\DataUser;
+use App\Models\Mst\KelasUser;
+use App\Models\Ref\Kelas;
 use App\Models\Ref\UserLevel;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -68,5 +70,14 @@ class User extends Model implements AuthenticatableContract,
     {   
         return $this->id == $related->mst_user_id;
     }
+
+
+    public function kelas_user()
+    {
+        return $this->hasManyThrough(KelasUser::class, Kelas::class, 'mst_user_id', 'ref_kelas_id');
+    }
+
+
+
 
 }

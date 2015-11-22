@@ -1,23 +1,19 @@
 <a 
+	data-toggle='tooltip'
+	title='persetujuan bergabung di dalam kelas'
 	href="#"
-	data-toggle='tooltip' 
-	id='aktivasi{{ $list->id }}'
- >
-	@if($list->is_open == 1)
-		<i class='fa fa-times'></i> tutup kelas
-	@else 
-		<i class='fa fa-check'></i> buka kelas
-	@endif
+	id="persetujuan{!! $list->id !!}" 
+>
+setujui
 </a>
 
-
-
 <script type="text/javascript">
-$('#aktivasi{{ $list->id }}').click(function(){
+	$('#persetujuan{!! $list->id !!}').click(function(){
+
 	setuju = confirm('are you sure?');
 	if(setuju == true){
 		$.ajax({
-			url : '{{ route("backend.kelas.aktivasi") }}',
+			url : '{{ route("backend.kelas.do_join_kelas") }}',
 			data : {id : '{{ $list->id }}', _token : '{!! csrf_token() !!}' },
 			type : 'post',
 			error: function(err){
@@ -26,8 +22,12 @@ $('#aktivasi{{ $list->id }}').click(function(){
 			success:function(ok){
 				window.location.reload();
 			}
-		});
-		return false;
+		})
 	}
-})
+
+		return false;
+	});
 </script>
+
+
+ 

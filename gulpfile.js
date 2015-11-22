@@ -50,6 +50,8 @@ elixir(function(mix) {
          "navbar/default-text.css",
          /* end of khusus navbar-default */
 
+         /* style/warna box */
+         "custom/box.css",
 
          /* nav samping */
          "custom/sidebar.css",

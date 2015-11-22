@@ -7,7 +7,7 @@
 			<th width="150px">Mata Pelajaran</th>
 			<th width="100px" class="text-center">Jml Siswa</th>
 			<th width="100px" class="text-center">Status</th>
-			<th width="90px" class="text-center">Action</th>
+			<th width="150px" class="text-center">Action</th>
 		</tr>
 	</thead>
 	<tbody>

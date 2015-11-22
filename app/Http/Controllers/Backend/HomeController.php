@@ -21,8 +21,9 @@ class HomeController extends Controller
 
 	public function index(Fungsi $fungsi)
 	{
+		$jml_siswa_kelas_saya = \Auth::user()->kelas_user;
 		$backend_home_index = true;
-		$vars = compact('backend_home_index', 'fungsi');
+		$vars = compact('backend_home_index', 'fungsi', 'jml_siswa_kelas_saya');
 		return view($this->base_view.'index', $vars);
 	}
 

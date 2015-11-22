@@ -2,12 +2,13 @@
   <div class="panel-heading">Biodata User </div>
   <div class="panel-body">
 
-
-<div class="col-md-4">
-  <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" class='img-circle avatar center-block' alt='...' >  
-</div>
-<div class="col-md-8">
+<div class="col-md-12">
 	<table class="table">
+	<tr>
+		<td colspan="2">
+		  <img src="{{ Gravatar::src(Auth::user()->email, 100) }}" class='img-circle avatar center-block' alt='...' >  
+		</td>
+	</tr>
 		<tr>
 			<td width="130px">
 				Nama

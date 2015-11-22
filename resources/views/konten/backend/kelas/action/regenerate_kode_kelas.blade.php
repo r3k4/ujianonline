@@ -1,10 +1,11 @@
-<i 
+<a 
+ 	id='regenerate{{ $list->id }}'
+	href="#"
 	data-toggle='tooltip' 
 	title='re-generate kode kelas' 
-	class='fa fa-refresh' 
-	style='cursor:pointer;' 
-	id='regenerate{{ $list->id }}'
-></i>
+	>
+<i class='fa fa-refresh'></i> regenerate
+</a>
 
 <script type="text/javascript">
 	$('#regenerate{!! $list->id !!}').click(function(){
@@ -21,6 +22,7 @@
 					window.location.reload();
 				}
 			})
+			return false;
 		}
 	});
 </script>

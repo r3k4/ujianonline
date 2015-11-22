@@ -32,4 +32,6 @@ class Kelas extends Eloquent{
 	}
 
 
+
+
 }

@@ -15,10 +15,9 @@
   </a>
 
   <ul class="dropdown-menu" aria-labelledby="dLabel">
-  	<li>@include($base_view.'action.siswa_kelas')</li>
-  	 <li>@include($base_view.'action.regenerate_kode_kelas')</li>
-  	 <li>@include($base_view.'action.manage_kelas')</li>
-  	 <li>@include($base_view.'action.view_detail_kelas')</li>
-  	<li>@include($base_view.'action.delete')</li>
+    @if($list->is_aktif == 0)
+      <li>@include($base_view.'siswa_kelas.action.persetujuan_join_kelas')</li>
+    @endif
+      <li>@include($base_view.'siswa_kelas.action.hapus_siswa_kelas')</li>
   </ul>
 </div>

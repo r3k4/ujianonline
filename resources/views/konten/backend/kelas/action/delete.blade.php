@@ -1,5 +1,12 @@
+   
+   	<a data-toggle='tooltip' title='hapus kelas' href="#" id='del{{ $list->id }}'>
+		<i  class='fa fa-trash' style='cursor:pointer;'></i> hapus
+   	</a> 
+  
 
-<i data-toggle='tooltip' title='hapus kelas' class='fa fa-trash' style='cursor:pointer;' id='del{{ $list->id }}'></i>
+
+
+
 
 <script type="text/javascript">
 $('#del{{ $list->id }}').click(function(){
@@ -15,7 +22,8 @@ $('#del{{ $list->id }}').click(function(){
 			success:function(ok){
 				window.location.reload();
 			}
-		})
+		});
+		return false;
 	}
 })
 </script>
