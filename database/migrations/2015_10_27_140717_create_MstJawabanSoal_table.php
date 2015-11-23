@@ -14,9 +14,9 @@ class CreateMstJawabanSoalTable extends Migration
     {
         Schema::create('mst_jawaban_soal', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mst_soal_id');
-            $table->string('jawaban');
-            $table->enum('is_benar', [1, 0])->default(0);
+            $table->integer('mst_soal_id'); //relasi ke tabel mst_soal
+            $table->string('jawaban'); // berisi jawaban, contoh A,B,C, dst
+            $table->enum('is_benar', [1, 0])->default(0); //jika value satu, maka kondisinya adalah jawaban tsb benar
             $table->timestamps();
         });
     }

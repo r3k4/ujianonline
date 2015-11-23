@@ -13,8 +13,8 @@ class CreateRefUserLevelTable extends Migration
     public function up()
     {
         Schema::create('ref_user_level', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama');
+            $table->increments('id'); //ID level atau role user
+            $table->string('nama'); //nama level atau role
             $table->timestamps();
         });
 

@@ -14,10 +14,10 @@ class CreateMstDataUserTable extends Migration
     {
         Schema::create('mst_data_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mst_user_id');
-            $table->string('tempat_lahir');
-            $table->date('tgl_lahir');
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->integer('mst_user_id'); //relasi dengan tabel mst_user
+            $table->string('tempat_lahir'); // tempat lahir user
+            $table->date('tgl_lahir'); //tgl lahir user
+            $table->enum('jenis_kelamin', ['L', 'P']); //jenis kelamin user
             $table->timestamps();
         });
     }

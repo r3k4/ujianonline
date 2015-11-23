@@ -14,8 +14,8 @@ class CreateMstSoalTable extends Migration
     {
         Schema::create('mst_soal', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('soal');
-            $table->integer('ref_soal_id');
+            $table->text('soal'); //berisi soal yg hendak diberikan kepada siswa
+            $table->integer('ref_soal_id'); //relasi ke tabel ref_soal
             $table->timestamps();
         });
     }

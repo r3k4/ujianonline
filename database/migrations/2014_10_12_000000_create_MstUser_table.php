@@ -14,12 +14,12 @@ class CreateMstUserTable extends Migration
     {
         Schema::create('mst_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->integer('ref_user_level_id');
-            $table->enum('aktif', [0,1])->default(0);
-            $table->rememberToken();
+            $table->string('nama'); //nama user/penggunga
+            $table->string('email')->unique(); //alamat email user
+            $table->string('password', 60); //password user
+            $table->integer('ref_user_level_id'); //level atau role yg dimiliki oleh user
+            $table->enum('aktif', [0,1])->default(0); //status user, aktif atau terblokir
+            $table->rememberToken(); //token ini digunakan pada saat login, mengenali identitas user(kebutuhan khusus saat authentikasi dan authorisasi program)
             $table->timestamps();
         });
     }

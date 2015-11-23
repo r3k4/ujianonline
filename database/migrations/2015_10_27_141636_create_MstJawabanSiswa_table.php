@@ -13,9 +13,9 @@ class CreateMstJawabanSiswaTable extends Migration
     public function up()
     {
         Schema::create('mst_jawaban_siswa', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('mst_jawaban_soal_id');
-            $table->integer('mst_user_id');
+            $table->increments('id'); 
+            $table->integer('mst_jawaban_soal_id'); // berisi jawaban yg dipilih oleh user
+            $table->integer('mst_user_id'); // relasi ke tabel user,level siswa
             $table->string('komentar'); //komentar berfungsi saat koreksi jawaban
             $table->timestamps();
         });
