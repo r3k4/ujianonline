@@ -13,7 +13,7 @@ class AddIsAktifToMstKelasUserTable extends Migration
     public function up()
     {
         Schema::table('mst_kelas_user', function (Blueprint $table) {
-            $table->enum('is_aktif', [0, 1])->default(0)->after('ref_kelas_id');
+            $table->enum('is_aktif', [0, 1])->default(0)->after('ref_kelas_id'); //tambahan kolom di tabel mst_kelas_user, relasi ke ref_kelas
         });
     }
 

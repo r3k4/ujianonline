@@ -13,7 +13,7 @@ class AddKodeKelasToRefKelasTable extends Migration
     public function up()
     {
         Schema::table('ref_kelas', function (Blueprint $table) {
-            $table->string('kode_kelas');
+            $table->string('kode_kelas'); //tambahan di tabel ref_kelas, berfungsi untuk inisialisasi kode kelas
         });
     }
 

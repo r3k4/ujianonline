@@ -14,8 +14,8 @@ class CreateMstPasswordResetTable extends Migration
     {
         Schema::create('mst_password_resets', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->index();
-            $table->string('token')->index();
+            $table->string('email')->index(); // email yg digunakan untuk reset password
+            $table->string('token')->index(); //token untuk inisialisasi email yg hendak di reset
             $table->timestamps();
         });
     }
