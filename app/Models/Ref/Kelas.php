@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Kelas extends Eloquent{
 	protected $table = 'ref_kelas';
-    protected $fillable = ['nama', 'ref_mapel_id', 'mst_user_id', 'is_open', 'keterangan'];
+    protected $fillable = ['nama', 'ref_mapel_id', 'mst_user_id', 'is_open', 'keterangan', 'kode_kelas'];
 
 
 

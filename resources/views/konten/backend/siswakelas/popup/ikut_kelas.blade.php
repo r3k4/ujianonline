@@ -42,16 +42,17 @@ $('#simpan').attr('disabled', 'disabled');
 		},
 		success:function(ok){
 			$('#simpan').removeAttr('disabled');
-			if(ok == ''){
-				pesan_error = '<h3> kode kelas salah! </h3>';
-				$('#pesan')
-					.addClass('alert alert-danger animated shake')
-					.html('<div class="alert alert-danger">'+pesan_error+'</div>');
-			}else if(ok == '0'){
-				pesan_error = '<h3> kelas sudah ditutup! </h3>';
-				$('#pesan')
-					.addClass('alert alert-danger animated shake')
-					.html('<div class="alert alert-danger">'+pesan_error+'</div>');
+			if(ok == '0'){
+				pesan_error = '<h3> kode kelas salah atau kelas sudah ditutup! </h3>';
+				$('#pesan').html('<div class="alert alert-danger animated shake">'+pesan_error+'</div>');
+			}else if(ok == '2'){
+				pesan_error = '<h3> anda sudah ada dalam kelas ini! </h3>';
+				$('#pesan').html('<div class="alert alert-danger animated shake">'+pesan_error+'</div>');
+			}else{
+				// ok =1
+				pesan_sukses = '<h3> data telah tersimpan! </h3>';
+				$('#pesan').html('<div class="alert alert-success">'+pesan_sukses+'</div>');
+				
 			}
 		}
 	})

@@ -51,26 +51,23 @@ class KelasSiswaController extends Controller
 
     public function do_ikut_kelas(Request $request)
     {
-        $ref_kelas_id = \Hashids::decode($request->kode_kelas);
-        if(count($ref_kelas_id)<=0){
-            return null;
-        }else{
-            $ref_kelas_id = $ref_kelas_id[0];
-            $check_ref_kelas = $this->kelas->findOrFail($ref_kelas_id);
-            if(count($check_ref_kelas)>0){
-                if($check_ref_kelas->is_open == 1){
-                    $check_user_kelas = $this->kelas_user->where('mst_user_id', '=', \Auth::user()->id)->first();
-                    if(count($check_user_kelas)<=0){
-                        $data = ['ref_kelas_id' => $ref_kelas_id, 'mst_user_id' => \Auth::user()->id];
-                        $insert = $this->kelas_user->create($data);
-                        return $insert;
-                    }
-                }else{
-                     return 0; //kelas sudah ditutup
+        $k = $this->kelas
+                  ->where('kode_kelas', '=', $request->kode_kelas)
+                  ->where('is_open', '=', 1)
+                  ->first();
+        if(count($k)>0){
+            $ku = $this->kelas_user
+                       ->where('mst_user_id', '=', \Auth::user()->id)
+                       ->first();
+                if(count($ku)>0){
+                    return 2;                    
                 }
-            }else{
-               return 00; //kode kelas tidak ditemukan
-            }
+
+            $data_kelas_user = ['mst_user_id' => \Auth::user()->id, 'ref_kelas_id' => $k->id];
+            $this->kelas_user->create($data_kelas_user);
+            return 1;
+        }else{
+            return 0;//kode kelas tdk ditemukan
         }
     }
 
