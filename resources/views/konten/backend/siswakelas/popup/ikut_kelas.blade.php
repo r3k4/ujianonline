@@ -3,16 +3,13 @@
 
 <div id="pesan"></div>
 
-<div class="row">
+<div id="form_ikut_kelas" class="row">
 	<div class="col-md-12">
 		<div class="form-group">
 			{!! Form::label('kode_kelas', 'Kode Kelas : ') !!}			
 			{!! Form::text('kode_kelas', '', ['id' => 'kode_kelas', 'placeholder' => 'kode kelas...', 'class' => 'form-control']) !!}
 		</div>	
-
-
-		<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> IKUT KELAS</button>
-
+		<button id='simpan' class='btn btn-info'><i class='fa fa-plug'></i> IKUT KELAS</button>
 	</div>
 </div>
 
@@ -49,10 +46,15 @@ $('#simpan').attr('disabled', 'disabled');
 				pesan_error = '<h3> anda sudah ada dalam kelas ini! </h3>';
 				$('#pesan').html('<div class="alert alert-danger animated shake">'+pesan_error+'</div>');
 			}else{
-				// ok =1
+				// ok =1 
+				$('#form_ikut_kelas').hide();
 				pesan_sukses = '<h3> data telah tersimpan! </h3>';
-				$('#pesan').html('<div class="alert alert-success">'+pesan_sukses+'</div>');
+				$('#pesan').html('<div class="alert alert-success animated fadeInDown">'+pesan_sukses+'</div>');
 				
+				//event on hidden
+				$('#myModal').on('hidden.bs.modal', function (e) {
+				  window.location.reload();
+				});				
 			}
 		}
 	})
