@@ -1,7 +1,19 @@
+    <li @if(isset($login_home)) class="active" @endif>
+      <a href="{!! route('auth.getLogin') !!}">
+        <i class="fa fa-lock"></i> Login
+      </a>
+    </li>
+
+
+    <li @if(isset($register_home)) class="active" @endif >
+        <a href="{!! route('auth.getRegister') !!}">
+          <i class="fa fa-user"></i> Register
+        </a>
+    </li>
+
+
 <li class="dropdown
-  @if(isset($register_home)) active  
-  @elseif(isset($login_home)) active 
-  @elseif(isset($password_home)) active 
+    @if(isset($password_home)) active 
   @endif
 
 ">
@@ -19,17 +31,8 @@
 
 
 
-    <li @if(isset($login_home)) class="active" @endif>
-      <a href="{!! route('auth.getLogin') !!}">
-        <i class="fa fa-lock"></i> Login
-      </a>
-    </li>
 
-    <li @if(isset($register_home)) class="active" @endif >
-        <a href="{!! route('auth.getRegister') !!}">
-          <i class="fa fa-user"></i> Register
-        </a>
-    </li>
+
 
     <li role="separator" class="divider"></li>
 
