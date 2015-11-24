@@ -47,7 +47,6 @@ class AuthController extends Controller
 
     public function getLogin(Request $request)
     {
-        //dd($request->session('errors'));
         $login_home = true;
         $vars = compact('login_home');
         return view($this->base_view.'login.index', $vars);

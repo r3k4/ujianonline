@@ -84,7 +84,6 @@ class PasswordController extends Controller
         switch ($response) {
             case Password::PASSWORD_RESET:
                 return redirect()->route('auth.password_reminder.getEmail')->with('status', trans($response));
-                //return redirect($this->redirectPath())->with('status', trans($response));
 
             default:
                 return redirect()->back()
@@ -99,8 +98,7 @@ class PasswordController extends Controller
     {
         $user->password = bcrypt($password);
         $user->save();
-        //return redirect()->route('auth.password_reminder.getEmail');
-        //Auth::login($user);
+        return 'ok';
     }
 
 
