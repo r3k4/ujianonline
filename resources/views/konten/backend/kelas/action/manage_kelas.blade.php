@@ -1,4 +1,5 @@
-<a 
+<button 
+	class="btn btn-link" 
 	href="#"
 	data-toggle='tooltip' 
 	id='aktivasi{{ $list->id }}'
@@ -8,7 +9,7 @@
 	@else 
 		<i class='fa fa-check'></i> buka kelas
 	@endif
-</a>
+</button>
 
 
 

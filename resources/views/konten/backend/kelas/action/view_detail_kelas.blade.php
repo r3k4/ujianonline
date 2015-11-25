@@ -1,11 +1,12 @@
-<a 
+<button 
+	class="btn btn-link" 
  	data-toggle='tooltip'
  	title='view data kelas'
  	id='view_detail_kelas{!! $list->id !!}'  	
 	href="#"
 >
  <i class='fa fa-th-list'></i> detail kelas
-</a>
+</button>
 
 
 
