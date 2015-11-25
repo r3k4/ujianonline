@@ -23,7 +23,10 @@ Route::group(['middleware' => ['auth', 'hanya_siswa']], function(){
 		'uses'	=> 'KelasSiswaController@do_ikut_kelas',
 	]);
 
- 
+	get('siswakelas/view_detail_kelas/{id}', [
+		'as'	=> 'backend.siswakelas.view_detail_kelas',
+		'uses'	=> 'KelasSiswaController@view_detail_kelas',
+	]); 
 
 });
 

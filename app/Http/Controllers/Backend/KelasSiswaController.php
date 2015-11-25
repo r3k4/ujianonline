@@ -71,6 +71,13 @@ class KelasSiswaController extends Controller
         }
     }
 
+    public function view_detail_kelas($id)
+    {
+        $kelas_user = $this->kelas_user->findOrFail($id);
+        $vars = compact('kelas_user');
+        return view($this->base_view.'popup.view_detail_kelas', $vars);
+    }
+
 
 
 
