@@ -148,6 +148,7 @@ return [
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Vinkla\Hashids\HashidsServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class
 
 
     ],
@@ -204,6 +205,7 @@ return [
         'Gravatar'  => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,  
         'Socialite' => Laravel\Socialite\Facades\Socialite::class, 
         'Hashids'   => Vinkla\Hashids\Facades\Hashids::class,
+        'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

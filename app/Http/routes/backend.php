@@ -9,6 +9,8 @@ Route::group(['prefix' => 'backend'], function(){
 	require __DIR__.'/backend/kelas.php';
 	require __DIR__.'/backend/siswakelas.php';
 
+	require __DIR__.'/backend/guru_siswa.php';
+
 
 });
 

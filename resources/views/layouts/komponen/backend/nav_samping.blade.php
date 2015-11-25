@@ -44,6 +44,13 @@
         </li>
 @endif
 
+@if(Auth::user()->ref_user_level_id == 3)
+         <li @if(isset($backend_guru_siswa_home)) class="active" @endif >
+            <a href="{{ route('backend.guru_siswa.index') }}">
+                <i class='fa fa-th-list'></i> Guru Pengajar
+            </a>
+        </li>
+@endif
 
 
 

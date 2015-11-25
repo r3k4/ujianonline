@@ -8,7 +8,9 @@
     <title> @yield('title', 'Ujian Online dan Bank Soal') </title>
 
     <link rel="stylesheet" href="{{ elixir('css/main.css') }}">
-	<script src="{{ elixir('js/main.js') }}"></script>
+    <link rel="stylesheet" href="/plugins/sweetalert/sweetalert.css">
+  <script src="{{ elixir('js/main.js') }}"></script>
+  <script src="/plugins/sweetalert/sweetalert.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
   
 
