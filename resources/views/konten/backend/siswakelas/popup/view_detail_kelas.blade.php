@@ -30,9 +30,9 @@
 				<td>Status</td>
 				<td>
 					@if($kelas_user->ref_kelas->is_open == 1)
-						<span class='text-danger'>open</span>
+						<span class='text-success'>open</span>
 					@else 
-						<span class='text-success'>closed</span>
+						<span class='text-danger'>closed</span>
 					@endif
 				</td>
 			</tr>

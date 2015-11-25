@@ -1,7 +1,7 @@
    
-   	<a data-toggle='tooltip' title='hapus kelas' href="#" id='del{{ $list->id }}'>
+   	<button class="btn btn-link" data-toggle='tooltip' title='hapus kelas' href="#" id='del{{ $list->id }}'>
 		<i  class='fa fa-trash' style='cursor:pointer;'></i> hapus
-   	</a> 
+   	</button> 
   
 
 
@@ -10,20 +10,43 @@
 
 <script type="text/javascript">
 $('#del{{ $list->id }}').click(function(){
-	setuju = confirm('are you sure?');
-	if(setuju == true){
-		$.ajax({
-			url : '{{ route("backend.kelas.delete") }}',
-			data : {id : '{{ $list->id }}', _token : '{!! csrf_token() !!}' },
-			type : 'post',
-			error: function(err){
-				alert('error! terjadi sesuatu pada sisi server!');
-			},
-			success:function(ok){
-				window.location.reload();
-			}
-		});
-		return false;
-	}
+
+swal({   
+	title: "Are you sure?",   
+	type: "warning",   
+	showCancelButton: true,   
+	confirmButtonColor: "#D43E3E",   
+	confirmButtonText: "Yes",   
+	cancelButtonText: "cancel!",   
+	showLoaderOnConfirm : true,
+	closeOnConfirm: false,   
+	closeOnCancel: true 
+}, 
+	function(isConfirm){   
+		if (isConfirm) { 
+
+			$.ajax({
+				url : '{{ route("backend.kelas.delete") }}',
+				data : {id : '{{ $list->id }}', _token : '{!! csrf_token() !!}' },
+				type : 'post',
+				error: function(err){
+					swal("error, terjadi kesalahan pada sisi server!", null, "error");					
+				},
+				success:function(ok){
+					swal({
+						title : "success!",
+						text : "data telah terhapus",
+						type : 'warning'
+					}, function(){
+						window.location.reload();
+					});
+				}
+			});
+
+		} 
+
+	}); //swal
+
+
 })
 </script>
