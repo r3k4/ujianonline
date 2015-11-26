@@ -2,6 +2,8 @@
 
 @section('main')
 
+	@include($base_view.'manage_soal.komponen.tombol_add')
+
 
 	<ol class="breadcrumb">
 	  <li><a href="{!! route('backend.quiz.index') !!}">Daftar Topik Quiz Ujian</a></li>

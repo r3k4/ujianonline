@@ -13,6 +13,8 @@
 	@include($base_view.'list_data')
 
 
+	
+</div>
 
 
 @endsection

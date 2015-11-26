@@ -100,5 +100,10 @@ class QuizController extends Controller
     }
 
 
+    public function manage_soal_add($mst_topik_soal_id){
+        return view($this->base_view.'manage_soal.popup.add');
+    }   
+
+
 
 }

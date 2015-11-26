@@ -38,6 +38,10 @@ Route::group(['middleware' => ['auth']], function(){
 		'uses'	=> 'QuizController@manage_soal',
 	]);
 
+	get('quiz/manage_soal/add/{mst_topik_soal_id}', [
+		'as'	=> 'backend.quiz.manage_soal.add',
+		'uses'	=> 'QuizController@manage_soal_add',
+	]);
 
 
 });
