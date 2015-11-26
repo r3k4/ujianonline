@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\Fungsi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Mst\KelasUser;
+use App\Models\Mst\User;
 use App\Models\Ref\Kelas;
 use Illuminate\Http\Request;
 
@@ -14,10 +16,11 @@ class GuruSiswaController extends Controller
 	private $base_view = 'konten.backend.guru_siswa.';
 	protected $kelas;
 	protected $kelas_user;
+	protected $user;
 
-
-    public function __construct(Kelas $kelas, KelasUser $kelas_user)
+    public function __construct(Kelas $kelas, KelasUser $kelas_user, User $user)
      {
+     	$this->user = $user;
      	$this->kelas_user = $kelas_user;
      	$this->kelas = $kelas;
      	view()->share('backend_guru_siswa_home', true);
@@ -27,6 +30,7 @@ class GuruSiswaController extends Controller
 
     public function index()
      {
+
      	$kelas_user = $this->kelas_user
      					->where('mst_user_id', '=', \Auth::user()->id)
      					->with('ref_kelas')
@@ -42,6 +46,13 @@ class GuruSiswaController extends Controller
      						 ->with('mst_user')
      						 ->get(); 
      	return view($this->base_view.'popup.daftar_siswa', compact('kelas_user'));
+     }
+
+
+     public function biodata_siswa($ref_kelas_id, $mst_user_id, Fungsi $fungsi)
+     {
+     	$user = $this->user->findOrFail($mst_user_id);
+     	return view($this->base_view.'popup.biodata_siswa', compact('user', 'fungsi'));
      }
 
 
