@@ -44,5 +44,23 @@ Route::group(['middleware' => ['auth']], function(){
 	]);
 
 
+	post('quiz/manage_soal/insert', [
+		'as'	=> 'backend.quiz.manage_soal.insert',
+		'uses'	=> 'QuizController@manage_soal_insert',
+	]);
+
+	get('quiz/manage_soal/add_jawaban/{mst_topik_soal_id}/{mst_soal_id}', [
+		'as'	=> 'backend.quiz.manage_soal.add_jawaban',
+		'uses'	=> 'QuizController@manage_soal_add_jawaban',
+	]);
+
+
+	post('quiz/manage_soal/insert_jawaban', [
+		'as'	=> 'backend.quiz.manage_soal.insert_jawaban',
+		'uses'	=> 'QuizController@manage_soal_insert_jawaban',
+	]);
+
+
+
 });
 
