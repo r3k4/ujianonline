@@ -44,6 +44,17 @@
         </li>
 @endif
 
+@if(Auth::user()->ref_user_level_id == 2)
+         <li @if(isset($backend_quiz_index)) class="active" @endif >
+            <a href="{{ route('backend.quiz.index') }}">
+                <i class='fa fa-check-square-o'></i> Quiz Ujian
+            </a>
+        </li>
+@endif
+
+
+
+
 @if(Auth::user()->ref_user_level_id == 3)
          <li @if(isset($backend_guru_siswa_home)) class="active" @endif >
             <a href="{{ route('backend.guru_siswa.index') }}">

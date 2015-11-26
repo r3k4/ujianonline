@@ -15,9 +15,21 @@
 
 <script type="text/javascript">
 $('#aktivasi{{ $list->id }}').click(function(){
-	setuju = confirm('are you sure?');
-	if(setuju == true){
-		$.ajax({
+
+
+swal({   
+	title: "Are you sure?",   
+	type: "warning",   
+	showCancelButton: true,   
+	confirmButtonColor: "#DD6B55",   
+	confirmButtonText: "yes!",   
+	cancelButtonText: "cancel!",   
+	closeOnConfirm: false,   
+	closeOnCancel: true,
+	showLoaderOnConfirm : true
+}, function(isConfirm){   
+	if (isConfirm) {     
+   		$.ajax({
 			url : '{{ route("backend.kelas.aktivasi") }}',
 			data : {id : '{{ $list->id }}', _token : '{!! csrf_token() !!}' },
 			type : 'post',
@@ -25,10 +37,23 @@ $('#aktivasi{{ $list->id }}').click(function(){
 				alert('error! terjadi sesuatu pada sisi server!');
 			},
 			success:function(ok){
-				window.location.reload();
+				swal({
+					title : "updated!", 
+					text : "status kelas telah ter-update.", 
+					type : "success"					
+				}, function(){
+					window.location.reload();
+				});				
+				
 			}
 		});
-		return false;
+
+
 	}
+
+});
+
+
+
 })
 </script>
