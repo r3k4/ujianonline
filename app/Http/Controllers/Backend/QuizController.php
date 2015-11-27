@@ -187,7 +187,11 @@ class QuizController extends Controller
     }
 
 
-
+    /**
+     * hapus salah satu jawaban soal
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function manage_soal_del_jawaban(Request $request)
     {
         $js = $this->jawaban_soal->findOrFail($request->id);

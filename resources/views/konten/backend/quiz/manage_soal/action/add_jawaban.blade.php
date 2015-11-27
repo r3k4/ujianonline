@@ -12,7 +12,7 @@ $('#add_jawaban{{ $list->id}}').click(function(){
 	$('.modal-body').html('loading... <i class="fa fa-spinner fa-spin"></i>');
 	$('#myModal').modal('show');
 	$('.modal-body').load('{{ route("backend.quiz.manage_soal.add_jawaban", [Request::segment(4), $list->id]) }}')
-
+	$('.modal-dialog').addClass('modal-lg');
 })
 </script>
 

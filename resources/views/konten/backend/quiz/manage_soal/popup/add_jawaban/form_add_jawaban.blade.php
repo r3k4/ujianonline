@@ -7,27 +7,30 @@
 		{!! Session::get('pesan_sukses') !!}
 	</div>
 @endif
-	<div id="pesan"></div>
 
-	{!! $soal->soal !!}
-	<hr>
+			{!! $soal->soal !!}
+			<hr>
 
+		<div style="display: none;" id="form_tambah_jawaban">
+			<div id="pesan"></div>
 
-		<div class="form-group">
-			{!! Form::label('jawaban', 'Isi Konten Soal : ') !!}
-			{!! Form::text('jawaban', '', ['class' => 'form-control', 'placeholder' => 'jawaban soal...']) !!}
+			<div class="form-group">
+				{!! Form::label('jawaban', 'Isi Konten Soal : ') !!}
+				{!! Form::text('jawaban', '', ['class' => 'form-control', 'placeholder' => 'jawaban soal...']) !!}
+			</div>
+			<div class="form-group">
+				{!! Form::label('is_benar', 'Benar/Salah : ') !!}
+				{!! Form::select('is_benar', [1 => 'benar', 0 => 'salah'], 0, ['class' => 'form-control', 'id' => 'is_benar']) !!}
+			</div>
+			<div class="form-group">
+				<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> SIMPAN</button>
+				<button id='cancel' class='btn btn-danger'><i class='fa fa-times'></i> BATAL</button>
+			</div>			
 		</div>
 
-		<div class="form-group">
-			{!! Form::label('is_benar', 'Benar/Salah : ') !!}
-			{!! Form::select('is_benar', [1 => 'benar', 0 => 'salah'], 0, ['class' => 'form-control', 'id' => 'is_benar']) !!}
-		</div>
-
-		<div class="form-group">
-			<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> SIMPAN</button>
-		</div>
-
-
+		<button class="btn btn-info" id="create_jawaban">
+			create jawaban
+		</button>
 	</div>
 </div>
 
@@ -35,6 +38,20 @@
 
 
 <script type="text/javascript">
+
+$('#create_jawaban').click(function(){
+	$('#create_jawaban').hide();
+	$('#form_tambah_jawaban').fadeIn();
+});
+
+$('#cancel').click(function(){
+	$('#form_tambah_jawaban').hide();
+	$('#create_jawaban').fadeIn();
+});
+
+
+
+
 $('#simpan').click(function(){
 	$('#pesan').removeClass('alert alert-danger animated shake').html('');
 jawaban = $('#jawaban').val();
