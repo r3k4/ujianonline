@@ -8,11 +8,10 @@
 	</div>
 @endif
 	<div id="pesan"></div>
-		<div class="form-group">
-			{!! Form::label('soal', 'Isi Konten Soal : ') !!}
-			{!! Form::text('soal', $soal->soal, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
-		</div>
-	
+
+	{!! $soal->soal !!}
+	<hr>
+
 
 		<div class="form-group">
 			{!! Form::label('jawaban', 'Isi Konten Soal : ') !!}
@@ -65,9 +64,7 @@ $('#simpan').attr('disabled', 'disabled');
 			 	title : 'success',
 			 	type : 'success'
 			 }, function(){
-			 	//window.location.reload(); 
 			 	$('.modal-body').load('{!! route("backend.quiz.manage_soal.add_jawaban", [Request::segment(5), Request::segment(6)]) !!}')
-			 	$('#list_data_jawaban').tab('show')
 			 });
 		}
 	})

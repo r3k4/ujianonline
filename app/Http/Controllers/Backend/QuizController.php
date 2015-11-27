@@ -174,6 +174,11 @@ class QuizController extends Controller
         return view($this->base_view.'manage_soal.popup.add_jawaban', $vars);
     }
 
+    /**
+     * insert jawaban untuk masing2 soal
+     * @param  createJawabanSoal $request [description]
+     * @return [type]                     [description]
+     */
     public function manage_soal_insert_jawaban(createJawabanSoal $request)
     {
         \Session::flash('pesan_sukses', 'data telah berhasil ditambahkan');
@@ -181,5 +186,13 @@ class QuizController extends Controller
         return $insert_jawaban;
     }
 
+
+
+    public function manage_soal_del_jawaban(Request $request)
+    {
+        $js = $this->jawaban_soal->findOrFail($request->id);
+        $js->delete();
+        return 'ok';
+    }
 
 }

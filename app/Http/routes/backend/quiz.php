@@ -61,6 +61,12 @@ Route::group(['middleware' => ['auth']], function(){
 	]);
 
 
+	post('quiz/manage_soal/del_jawaban', [
+		'as'	=> 'backend.quiz.manage_soal.del_jawaban',
+		'uses'	=> 'QuizController@manage_soal_del_jawaban',
+	]);
+
+
 
 });
 
