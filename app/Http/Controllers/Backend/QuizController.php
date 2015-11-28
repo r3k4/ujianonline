@@ -167,10 +167,10 @@ class QuizController extends Controller
      * @param  [type] $mst_soal_id       [description]
      * @return [type]                    [description]
      */
-    public function manage_soal_add_jawaban($mst_topik_soal_id, $mst_soal_id)
+    public function manage_soal_add_jawaban($mst_topik_soal_id, $mst_soal_id, Fungsi $fungsi)
     {
         $soal = $this->soal->findOrFail($mst_soal_id);
-        $vars = compact('soal');
+        $vars = compact('soal', 'fungsi');
         return view($this->base_view.'manage_soal.popup.add_jawaban', $vars);
     }
 
@@ -183,20 +183,73 @@ class QuizController extends Controller
     {
         \Session::flash('pesan_sukses', 'data telah berhasil ditambahkan');
         $insert_jawaban = $this->jawaban_soal->create($request->except('_token'));
+
+        if($request->is_benar == 1){
+            $all_js = $this->jawaban_soal->where('mst_soal_id', '=', $request->mst_soal_id)->get();
+            foreach($all_js as $list){
+                $list->is_benar = 0;
+                $list->save();
+            }
+            $js = $this->jawaban_soal->findOrFail($insert_jawaban->id);
+            $js->is_benar = 1;
+            $js->save();
+        }
+
+
         return $insert_jawaban;
     }
 
 
     /**
-     * hapus salah satu jawaban soal
+     * POST hapus salah satu jawaban soal
      * @param  Request $request [description]
      * @return [type]           [description]
      */
     public function manage_soal_del_jawaban(Request $request)
     {
+        \Session::flash('pesan_sukses', 'data telah terhapus');
         $js = $this->jawaban_soal->findOrFail($request->id);
         $js->delete();
         return 'ok';
     }
+
+
+    /**
+     * GET edit salah satu jawaban soal
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function manage_soal_edit_jawaban($mst_topik_soal_id, $mst_soal_id, $id, Request $request, Fungsi $fungsi)
+    {
+        $jawaban = $this->jawaban_soal->findOrFail($id);
+        $soal = $this->soal->findOrFail($mst_soal_id);
+        $vars = compact('soal', 'fungsi', 'jawaban');        
+        return view($this->base_view.'manage_soal.popup.edit_jawaban', $vars);
+    }
+
+
+
+
+    /**
+     * POST set untuk memilih jawaban yg benar pada soal
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function manage_soal_set_jawaban_benar(Request $request)
+    {
+
+        $js = $this->jawaban_soal->findOrFail($request->id);
+
+        $all_js = $this->jawaban_soal->where('mst_soal_id', '=', $js->mst_soal_id)->get();
+        foreach($all_js as $list){
+            $list->is_benar = 0;
+            $list->save();
+        }
+
+        $js->is_benar = 1;
+        $js->save();
+        return 'ok';
+    }
+
 
 }

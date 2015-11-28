@@ -5,12 +5,35 @@ namespace App\Helpers;
 class Fungsi {
 
 
-public function timer()
-{
-    $time = explode(' ', microtime());
-    return $time[0]+$time[1];
-}
+  public function timer()
+  {
+      $time = explode(' ', microtime());
+      return $time[0]+$time[1];
+  }
 
+  public function toAlpha($n,$case = 'upper'){
+      $alphabet   = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+      $n = $n - 1;
+      // Util::error_log('N'.$n);
+      if($n <= 26){
+          $alpha =  $alphabet[$n];
+      } elseif($n > 26) {
+          $dividend   = ($n);
+          $alpha      = '';
+          $modulo;
+          while($dividend > 0){
+              $modulo     = ($dividend - 1) % 26;
+              $alpha      = $alphabet[$modulo].$alpha;
+              $dividend   = floor((($dividend - $modulo) / 26));
+          }
+      }
+
+      if($case=='lower'){
+          $alpha = strtolower($alpha);
+      }
+      // Util::error_log("**************".$alpha);
+      return $alpha;
+  }
 
 
 
