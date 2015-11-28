@@ -40,7 +40,7 @@
 <script type="text/javascript">
 $('#edit{{ $list->id}}').click(function(){
 	$('.modal-body').html('loading... <i class="fa fa-spinner fa-spin"></i>');
-	$('.modal-body').load('{{ route("backend.quiz.manage_soal.edit_jawaban", [Request::segment(5), Request::segment(6), $list->id]) }}')
+	$('.modal-body').load('{{ route("backend.quiz.manage_soal.edit_jawaban", [Request::segment(5), Request::segment(6), $list->id]) }}');
 });
 </script>
 

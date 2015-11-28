@@ -228,6 +228,19 @@ class QuizController extends Controller
     }
 
 
+    /**
+     * @param  POST update simpan soal jawaban
+     * @return [type]
+     */
+    public function manage_soal_update_jawaban(Request $request)
+    {
+        $update_jawaban = $this->jawaban_soal
+                               ->where('id', '=', $request->id)
+                               ->update($request->except('_token'));
+        return $update_jawaban;
+    }
+
+
 
 
     /**

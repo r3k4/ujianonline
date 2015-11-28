@@ -7,47 +7,34 @@
 		{!! Session::get('pesan_sukses') !!}
 	</div>
 @endif
-
 			{!! $soal->soal !!}
 			<hr>
-
-		<div style="display: none;" id="form_tambah_jawaban">
 			<div id="pesan"></div>
-
 			<div class="form-group">
 				{!! Form::label('jawaban', 'Isi Konten Soal : ') !!}
-				{!! Form::text('jawaban', '', ['class' => 'form-control', 'placeholder' => 'jawaban soal...']) !!}
+				{!! Form::text('jawaban', $jawaban->jawaban, ['class' => 'form-control', 'placeholder' => 'jawaban soal...']) !!}
 			</div>
 			<div class="form-group">
 				{!! Form::label('is_benar', 'Benar/Salah : ') !!}
-				{!! Form::select('is_benar', [1 => 'benar', 0 => 'salah'], 0, ['class' => 'form-control', 'id' => 'is_benar']) !!}
+				{!! Form::select('is_benar', [1 => 'benar', 0 => 'salah'], $jawaban->is_benar, ['class' => 'form-control', 'id' => 'is_benar']) !!}
 			</div>
 			<div class="form-group">
 				<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> SIMPAN</button>
 				<button id='cancel' class='btn btn-danger'><i class='fa fa-times'></i> BATAL</button>
-			</div>			
-		</div>
+			</div>	 
 
-		<button class="btn btn-info" id="create_jawaban">
-			create jawaban
-		</button>
 	</div>
 </div>
 
 
 <script type="text/javascript">
 
-$('#create_jawaban').click(function(){
-	$('#create_jawaban').hide();
-	$('#form_tambah_jawaban').fadeIn();
-});
 
 $('#cancel').click(function(){
-	$('#form_tambah_jawaban').hide();
-	$('#create_jawaban').fadeIn();
+	$('.modal-body').html('loading... <i class="fa fa-spinner fa-spin"></i>');
+	$('.modal-body').load('{{ route("backend.quiz.manage_soal.add_jawaban", [Request::segment(5), Request::segment(6)]) }}');
 });
-
-
+ 
 
 
 $('#simpan').click(function(){
@@ -57,6 +44,7 @@ is_benar = $('#is_benar').val();
 
 form_data ={
 	jawaban 	: jawaban,
+	id 			: {!! $jawaban->id !!},
 	is_benar 	: is_benar,
 	mst_soal_id : {!! Request::segment(6) !!},
  	_token 		: '{!! csrf_token() !!}'
