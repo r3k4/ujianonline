@@ -32,7 +32,10 @@ Route::group(['middleware' => ['auth']], function(){
 		'uses'	=> 'QuizController@view_detail',
 	]);
 
-
+	post('quiz/delete', [
+		'as'	=> 'backend.quiz.delete',
+		'uses'	=> 'QuizController@delete',
+	]);
 
 
 	/**  Kelola Soal  */ 

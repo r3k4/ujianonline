@@ -2,6 +2,7 @@
 
 namespace App\Models\Mst;
 
+use App\Models\Mst\Soal;
 use App\Models\Mst\User;
 use App\Models\Ref\Kelas;
 use App\Models\Ref\TingkatKesulitan;
@@ -34,6 +35,12 @@ class TopikSoal extends Eloquent{
     public function mst_user()
     {
     	return $this->belongsTo(User::class, 'mst_user_id');
+    }
+
+
+    public function mst_soal()
+    {
+        return $this->hasMany(Soal::class, 'mst_topik_soal_id');
     }
 
 

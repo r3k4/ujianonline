@@ -122,6 +122,24 @@ class QuizController extends Controller
     }
 
 
+
+    public function delete(Request $request)
+    {
+        $ts = $this->topik_soal->findOrFail($request->id);
+        //hapus daftar soal
+        foreach($ts->mst_soal as $list){
+            //hapus semua jawaban
+            foreach($list->mst_jawaban_soal as $list_jawaban){
+                $list_jawaban->delete();
+            }
+            $list->delete();
+        }
+        //hapus topik soal
+        $ts->delete();
+        return 'ok';
+    }
+
+
     /**
      * menampilkan daftar soal yg ada di dlm topik
      * @param  [type] $mst_topik_soal_id [description]

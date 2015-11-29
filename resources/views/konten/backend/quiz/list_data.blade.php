@@ -4,7 +4,8 @@
 			<th class="text-center" width="15px"> No.</th>
 			<th>Topik Quiz Soal</th>
 			<th>Kelas</th>
-			<th width="100px" class="text-center">Action</th>
+			<th class="text-center" width="100px">Jml Soal</th>
+			<th width="150px" class="text-center">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,11 +22,17 @@
 				{!! $list->ref_kelas->nama !!}
 			</td>
 			<td class="text-center">
+				<span class='label label-success'>{!! count($list->mst_soal) !!}</span>
+			</td>
+			<td class="text-center">
 				@include($base_view.'action.edit')
 				|| 
 				@include($base_view.'action.view_detail')
 				||
-				@include($base_view.'action.manage_soal')
+				@include($base_view.'action.manage_soal') 
+
+				||
+				@include($base_view.'action.delete')
 			</td>
 		</tr>
 		<?php $no++; ?>
