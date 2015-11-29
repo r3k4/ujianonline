@@ -47,9 +47,24 @@ Route::group(['middleware' => ['auth']], function(){
 	]);
 
 
+	get('quiz/manage_soal/edit/{id}', [
+		'as'	=> 'backend.quiz.manage_soal.edit',
+		'uses'	=> 'QuizController@manage_soal_edit',
+	]);
+
 	post('quiz/manage_soal/insert', [
 		'as'	=> 'backend.quiz.manage_soal.insert',
 		'uses'	=> 'QuizController@manage_soal_insert',
+	]);
+
+	post('quiz/manage_soal/update', [
+		'as'	=> 'backend.quiz.manage_soal.update',
+		'uses'	=> 'QuizController@manage_soal_update',
+	]);
+
+	post('quiz/manage_soal/delete', [
+		'as'	=> 'backend.quiz.manage_soal.delete',
+		'uses'	=> 'QuizController@manage_soal_delete',
 	]);
 
 

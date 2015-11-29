@@ -52,6 +52,19 @@ $('#edit_topik').click(function(){
 	</tr>
 	<tr>
 		<td>
+			Acak Soal ?
+		</td>
+		<td>
+			@if($topik->is_soal_acak == 1)
+				Ya
+			@else 
+				Tidak 
+			@endif
+		</td>
+	</tr>
+
+	<tr>
+		<td>
 			Kelas
 		</td>
 		<td>

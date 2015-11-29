@@ -27,7 +27,9 @@
 					</span>					
 				</td>
 				<td class="text-center">
+					@include($base_view.'manage_soal.action.delete')
 					@include($base_view.'manage_soal.action.add_jawaban')
+					@include($base_view.'manage_soal.action.edit')
 				</td>
 			</tr>
 			<?php $no++; ?>
@@ -35,3 +37,4 @@
 	</tbody>
 </table> 
 
+{!! $soal->render() !!}

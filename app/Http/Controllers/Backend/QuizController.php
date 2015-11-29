@@ -133,6 +133,7 @@ class QuizController extends Controller
     	$soal = $this->soal
                      ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
                      ->with('mst_jawaban_soal')
+                     ->orderBy('id', 'DESC')
                      ->paginate(10);
     	$vars = compact('topik', 'soal');
     	return view($this->base_view.'manage_soal.index', $vars);
@@ -148,6 +149,28 @@ class QuizController extends Controller
         return view($this->base_view.'manage_soal.popup.add');
     }   
 
+    /**
+     * @param  GET edit isi soal
+     * @return [type]
+     */
+    public function manage_soal_edit($id)
+    {
+        $soal = $this->soal->findOrFail($id);
+        $vars = compact('soal');
+        return view($this->base_view.'manage_soal.popup.edit', $vars);
+    }
+
+
+    /**
+     * @param  POST update isi soal
+     * @return [type]
+     */
+    public function manage_soal_update(createSoalRequest $request)
+    {
+        $update = $this->soal->where('id', '=', $request->id)
+                       ->update($request->except('_token'));
+        return $update;
+    }
 
     /**
      * POST insert data soal 
@@ -158,6 +181,14 @@ class QuizController extends Controller
     {
         $insert = $this->soal->create($request->except('_token'));
         return $insert;
+    }
+
+
+    public function manage_soal_delete(Request $request)
+    {
+        $s = $this->soal->findOrFail($request->id);
+        $s->delete();
+        return 'ok';
     }
 
 
