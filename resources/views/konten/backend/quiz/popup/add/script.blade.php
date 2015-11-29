@@ -16,17 +16,19 @@
 
 $('#simpan').click(function(){
 	$('#pesan').removeClass('alert alert-danger animated shake').html('');
-nama = $('#nama').val();
-waktu_pengerjaan = $('#waktu_pengerjaan').val();
-ref_tingkat_kesulitan_soal_id = $('#ref_tingkat_kesulitan_soal_id').val();
-ref_kelas_id = $('#ref_kelas_id').val();
-is_jawaban_acak = $('#is_jawaban_acak').val();
+	nama = $('#nama').val();
+	waktu_pengerjaan = $('#waktu_pengerjaan').val();
+	ref_tingkat_kesulitan_soal_id = $('#ref_tingkat_kesulitan_soal_id').val();
+	ref_kelas_id = $('#ref_kelas_id').val();
+	is_jawaban_acak = $('#is_jawaban_acak').val();
+	keterangan = $('#keterangan').val();
 
  
 
 
 form_data ={
 	nama 							: nama,
+	keterangan 						: keterangan,
 	mst_user_id						: '{!! Auth::user()->id !!}',
 	waktu_pengerjaan 				: waktu_pengerjaan,
 	ref_tingkat_kesulitan_soal_id 	: ref_tingkat_kesulitan_soal_id,

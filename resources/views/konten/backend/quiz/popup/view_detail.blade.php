@@ -81,4 +81,15 @@ $('#edit_topik').click(function(){
 		</td>
 	</tr>
 
+
+	<tr>
+		<td>
+			Deskripsi Topik
+		</td>
+		<td>
+			{!! $topik->keterangan !!}
+		</td>
+	</tr>
+
+
 </table>

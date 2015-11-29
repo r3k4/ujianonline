@@ -6,6 +6,8 @@
 
 	<div id="pesan"></div>
 
+
+	<div class="col-md-6">
 		<div class="form-group">
 			{!! Form::label('nama', 'Judul Topik :') !!}
 			{!! Form::text('nama', '', ['id' => 'nama', 'class' => 'form-control', 'placeholder' => 'topik soal...']) !!}
@@ -24,9 +26,10 @@
 		<div class="form-group">
 			{!! Form::label('ref_tingkat_kesulitan_soal_id', 'Tingkat Kesulitan Soal : ') !!} 
 			{!! Form::select('ref_tingkat_kesulitan_soal_id',  $tingkat_kesulitan, '', ['id' => 'ref_tingkat_kesulitan_soal_id', 'class' => 'form-control']) !!}
-		</div>
+		</div>		
+	</div>
 
-
+	<div class="col-md-6">
 		<div class="col-md-6">
 			<div class="form-group">
 				{!! Form::label('is_jawaban_acak', 'Acak Jawaban ? ') !!} 
@@ -39,6 +42,17 @@
 				{!! Form::select('is_soal_acak', [1 => 'acak', 0 => 'tidak acak'], 1, ['id' => 'is_soal_acak', 'class' => 'form-control']) !!}
 			</div>			
 		</div>
+		<div class="form-group">
+			{!! Form::label('keterangan', 'Deskripsi topik soal : ') !!}
+			{!! Form::textarea('keterangan',  '', ['id' => 'keterangan', 'class' => 'form-control', 'style' => 'height:200px;', 'placeholder' => 'deskripsi topik soal...']) !!}
+		</div>			
+	</div>
+
+
+
+
+
+
 
 
 
