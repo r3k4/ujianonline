@@ -43,10 +43,13 @@ $('#simpan').attr('disabled', 'disabled');
 			 	type : 'success'
 			 }, function(){
 			 	$('.modal-body').load('{!! route("backend.quiz.manage_soal.add_jawaban", [Request::segment(5), Request::segment(6)]) !!}')
+				$('#myModal').on('hidden.bs.modal', function (e) {
+					window.location.reload();
+				});					 
 			 });
 		}
-	})
-})
+	});
+});
 
 
 

@@ -18,7 +18,10 @@
 					alert('error! terjadi sesuatu pada sisi server!');
 				},
 				success:function(ok){
-						 	$('.modal-body').load('{!! route("backend.quiz.manage_soal.add_jawaban", [Request::segment(5), Request::segment(6)]) !!}')	
+					$('.modal-body').load('{!! route("backend.quiz.manage_soal.add_jawaban", [Request::segment(5), Request::segment(6)]) !!}');
+					$('#myModal').on('hidden.bs.modal', function (e) {
+						window.location.reload();
+					});		
 				}
 			});
 	});

@@ -40,6 +40,7 @@
 			</div>			
 		</div>
 
+ 
 
 		<div class="form-group">
 			{!! Form::label('keterangan', 'Deskripsi topik soal : ') !!}
@@ -50,6 +51,7 @@
 
 	<div class="form-group">
 	<button id='simpan' class='btn btn-info'><i class='fa fa-floppy-o'></i> SIMPAN</button>
+	<button id='batal' class='btn btn-default'><i class='fa fa-times'></i> BATAL</button>
 	</div>
 
 	</div>

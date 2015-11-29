@@ -1,6 +1,11 @@
 
 <script type="text/javascript">
 
+$('#batal').click(function(){
+	$('#myModal').modal('hide');
+});
+
+
 
      $('#waktu_pengerjaan').keypress(function(e) {
             var a = [];

@@ -1,4 +1,9 @@
-<i class='fa fa-times' style='cursor:pointer;' id='del{{ $list->id }}'></i>
+<i 	data-toggle='tooltip'
+	title='hapus topik'
+	class='fa fa-times' 
+	style='cursor:pointer;' 
+	id='del{{ $list->id }}'
+></i>
 
 <script type="text/javascript">
 $('#del{{ $list->id }}').click(function(){
@@ -33,10 +38,6 @@ $('#del{{ $list->id }}').click(function(){
 			})		
 		}
 	});
-
-
-
-
 
 });
 </script>

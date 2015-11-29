@@ -52,7 +52,8 @@ class QuizController extends Controller
     public function index()
     {
     	$topik_quiz = $this->topik_soal->with('ref_kelas')->paginate(10);
-    	return view($this->base_view.'index', compact('topik_quiz'));
+        $vars = compact('topik_quiz');
+    	return view($this->base_view.'index', $vars);
     }
 
     /**
@@ -152,12 +153,13 @@ class QuizController extends Controller
     public function manage_soal($mst_topik_soal_id)
     {
     	$topik = $this->topik_soal->findOrFail($mst_topik_soal_id);
-    	$soal = $this->soal
+    	$q_soal = $this->soal
                      ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
                      ->with('mst_jawaban_soal')
                      ->orderBy('id', 'DESC')
                      ->paginate(10);
-    	$vars = compact('topik', 'soal');
+        $soal = $this->soal;
+    	$vars = compact('topik', 'q_soal', 'soal');
     	return view($this->base_view.'manage_soal.index', $vars);
     }
 

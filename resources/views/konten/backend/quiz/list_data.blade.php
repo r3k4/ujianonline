@@ -39,3 +39,6 @@
 	@endforeach
 	</tbody>
 </table>
+
+
+{!! $topik_quiz->render() !!}

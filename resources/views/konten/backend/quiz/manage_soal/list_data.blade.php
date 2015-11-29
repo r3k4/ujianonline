@@ -12,9 +12,14 @@
 		</tr>
 	</thead>
 	<tbody>
-	<?php $no = $soal->firstItem(); ?>
-		@foreach($soal as $list)
-			<tr>
+	<?php $no = $q_soal->firstItem(); ?>
+		@foreach($q_soal as $list)
+			<tr
+			@if($soal->is_soal_bermasalah($list->id) == 1)
+				class="text-danger" data-toggle='tooltip' title='belum ada kunci jawaban yg diberikan pada soal ini'
+			@endif
+
+			>
 				<td class="text-center">
 					{!! $no !!}
 				</td>
@@ -37,4 +42,4 @@
 	</tbody>
 </table> 
 
-{!! $soal->render() !!}
+{!! $q_soal->render() !!}
