@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * controller class yg digunakan untuk mengelola 
+ * data kelas di level guru
+ */
 namespace App\Http\Controllers\Backend;
 
 use App\Helpers\Fungsi;
@@ -47,7 +50,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * form untuk menambah kelas
+	 * GET form untuk menambah kelas
 	 */
 	public function add()
 	{
@@ -58,7 +61,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * action untuk menambah kelas
+	 * POST action untuk menambah kelas
 	 * @param  createKelasRequest $request [description]
 	 * @return [type]                      [description]
 	 */
@@ -72,7 +75,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * action untuk membuka status kelas agar siswa bs join atau sebaliknya
+	 * POST action untuk membuka status kelas agar siswa bs join atau sebaliknya
 	 * @param  Request $request [description]
 	 * @return [type]           [description]
 	 */
@@ -90,7 +93,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * action untuk me-regenerate kode_kelas
+	 * POST action untuk me-regenerate kode_kelas
 	 * @param  Request $request [description]
 	 * @return [type]           [description]
 	 */
@@ -103,7 +106,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * action untuk menghapus kelas
+	 * POST action untuk menghapus kelas
 	 * @param  Request $request [description]
 	 * @return [type]           [description]
 	 */
@@ -114,7 +117,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * halaman untuk melihat detail kelas
+	 * GET halaman untuk melihat detail kelas
 	 * @param  [type] $id [description]
 	 * @return [type]     [description]
 	 */
@@ -126,7 +129,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * halaman untuk edit data kelas
+	 * GET halaman untuk edit data kelas
 	 * @param  [type] $id [description]
 	 * @return [type]     [description]
 	 */
@@ -140,7 +143,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * update data kelas
+	 * POST update data kelas
 	 * @param  updateKelasRequest $request [object]
 	 * @return [type]                      [json]
 	 */
@@ -153,7 +156,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * daftar siswa, untuk melihat list siswa
+	 * GET daftar siswa, untuk melihat list siswa
 	 * @param  [type] $id [ref_kelas_id]
 	 * @return [type]      
 	 */
@@ -165,7 +168,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * submit persetujuan bergabung dalam kelas
+	 * POST submit persetujuan bergabung dalam kelas
 	 * @return [type] [description]
 	 */
 	public function do_join_kelas(Request $request)
@@ -177,7 +180,7 @@ class KelasGuruController extends Controller
 	}
 
 	/**
-	 * hapus siswa dari kelas yg ada
+	 * POST hapus siswa dari kelas yg ada
 	 * @param  Request $request [description]
 	 * @return [type]           [description]
 	 */

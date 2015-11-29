@@ -18,7 +18,11 @@ class HomeController extends Controller
 		view()->share('base_view', $this->base_view);
 	}
    
-
+	/**
+	 * menampilkan data halaman utama atau dashboard
+	 * @param  Fungsi $fungsi [description]
+	 * @return [type]         [description]
+	 */
 	public function index(Fungsi $fungsi)
 	{
 		$jml_siswa_kelas_saya = \Auth::user()->kelas_user;

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * controller class untuk mengelola profile user yg sedang login
+ */
+
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
@@ -20,6 +24,10 @@ class MyProfileController extends Controller
     	view()->share('base_view', $this->base_view);
     }
 
+    /**
+     * menampilkan data pribadi user
+     * @return [type] [description]
+     */
     public function index()
     {
     	$backend_myprofile_home = true;
@@ -28,7 +36,11 @@ class MyProfileController extends Controller
     	return view($this->base_view.'index', $vars);
     }
 
-
+    /**
+     * POST update data profile user
+     * @param  UpdateProfile $request [description]
+     * @return [type]                 [description]
+     */
     public function update_profile(UpdateProfile $request)
     {
         //update tabel mst_user

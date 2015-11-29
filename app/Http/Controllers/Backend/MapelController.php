@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * controller class untuk mengelola daftar mata pelajawan yg diajarkan oleh guru
+ */
+
 namespace App\Http\Controllers\Backend;
 
 use App\Helpers\Fungsi;
@@ -23,7 +27,10 @@ class MapelController extends Controller
     }
 
 
-
+    /**
+     * GET lihat daftar mata pelajaran
+     * @return [type] [description]
+     */
     public function index()
     {
         $this->authorize('canShow', \Auth::user()); //acl
@@ -33,19 +40,30 @@ class MapelController extends Controller
     	return view($this->base_view.'index', $vars);
     }
 
-
+    /**
+     * GET menampilkan form add mata pelajaran
+     */
     public function add()
     {
         return view($this->base_view.'popup.add');
     }
 
+    /**
+     * POST insert data mata pelajaran
+     * @param  insertMapel $request [description]
+     * @return [type]               [description]
+     */
     public function insert(insertMapel $request)
     {
         $this->mapel->create($request->except('_token'));
         return 'ok';
     }
 
-
+    /**
+     * POST action untuk menghapus salah satu mata pelajaran
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function delete(Request $request)
     {
         $m = $this->mapel->findOrFail($request->id);
@@ -55,7 +73,11 @@ class MapelController extends Controller
         return 'ok';
     }
 
-
+    /**
+     * GET edit data mata pelajaran
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function edit($id)
     {
         $mapel = $this->mapel->findOrFail($id);
@@ -64,6 +86,11 @@ class MapelController extends Controller
     }
 
 
+    /**
+     * POST action untuk update data mata pelajaran
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function update(Request $request)
     {
         $this->mapel

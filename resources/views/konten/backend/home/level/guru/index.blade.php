@@ -1,4 +1,4 @@
-  <div class="col-lg-4 col-xs-6 ">
+{{--   <div class="col-lg-4 col-xs-6 ">
       <div class="small-box bg-olive">
         <div class="inner">
             <h3> 
@@ -15,4 +15,4 @@
             More info <i class="fa fa-arrow-circle-right"></i>
         </a>
     </div>
-</div>
+</div> --}}

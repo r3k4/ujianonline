@@ -1,4 +1,8 @@
 <?php 
+/**
+ * route untuk mengelola data kelas yang diikuti di level siswa
+ */
+
 
 Route::group(['middleware' => ['auth', 'hanya_siswa']], function(){
 

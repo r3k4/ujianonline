@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * controller class untuk mengelola data kelas yang diikuti di level siswa
+ */
+
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
@@ -24,7 +28,10 @@ class KelasSiswaController extends Controller
         view()->share('base_view', $this->base_view);
     }
 
-
+    /**
+     * GET melihat daftar kelas yg diikuti oleh siswa
+     * @return [type] [description]
+     */
     public function index()
     {
         $kelas_user = $this->kelas_user
@@ -36,6 +43,11 @@ class KelasSiswaController extends Controller
     }
 
 
+    /**
+     * POST action untuk berhenti mengikuti kelas ini
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function stop_kelas(Request $request)
     {
         $ku = $this->kelas_user->findOrFail($request->id);
@@ -44,6 +56,10 @@ class KelasSiswaController extends Controller
     }
 
 
+    /**
+     * POST action yg digunakan untuk me
+     * @return [type] [description]
+     */
     public function ikut_kelas()
     {
         return view($this->base_view.'popup.ikut_kelas');
@@ -71,6 +87,12 @@ class KelasSiswaController extends Controller
         }
     }
 
+
+    /**
+     * melihat detail kelas yg diikuti oleh siswa yg sedang login
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
     public function view_detail_kelas($id)
     {
         $kelas_user = $this->kelas_user->findOrFail($id);

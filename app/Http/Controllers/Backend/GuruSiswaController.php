@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * controller class untuk mengelola data 
+ * guru dan siswa di level siswa
+ */
 namespace App\Http\Controllers\Backend;
 
 use App\Helpers\Fungsi;
@@ -27,7 +30,10 @@ class GuruSiswaController extends Controller
      	view()->share('base_view', $this->base_view);
      }
 
-
+     /**
+      * GET daftar kelas yg diikuti oleh siswa yang bersangkutan
+      * @return [type] [description]
+      */
     public function index()
      {
 
@@ -39,6 +45,12 @@ class GuruSiswaController extends Controller
      	return view($this->base_view.'index', $vars);
      }
 
+
+     /**
+      * daftar siswa yg mengikuti kelas ini
+      * @param  [type] $ref_kelas_id [int]
+      * @return [type]               [view]
+      */
      public function daftar_siswa($ref_kelas_id)
      {
      	$kelas_user =	$this->kelas_user
@@ -48,7 +60,13 @@ class GuruSiswaController extends Controller
      	return view($this->base_view.'popup.daftar_siswa', compact('kelas_user'));
      }
 
-
+     /**
+      * GET list detail biodata siswa yg mengikuti kelas ini
+      * @param  [type] $ref_kelas_id [description]
+      * @param  [type] $mst_user_id  [description]
+      * @param  Fungsi $fungsi       [description]
+      * @return [type]               [description]
+      */
      public function biodata_siswa($ref_kelas_id, $mst_user_id, Fungsi $fungsi)
      {
      	$user = $this->user->findOrFail($mst_user_id);

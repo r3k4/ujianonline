@@ -122,7 +122,11 @@ class QuizController extends Controller
     }
 
 
-
+    /**
+     * POST delete topik soal
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function delete(Request $request)
     {
         $ts = $this->topik_soal->findOrFail($request->id);
