@@ -3,6 +3,7 @@
 namespace App\Models\Ref;
 
 use App\Models\Mst\KelasUser;
+use App\Models\Mst\TopikSoal;
 use App\Models\Mst\User;
 use App\Models\Ref\Mapel;
 use Illuminate\Database\Eloquent\Model as Eloquent;
@@ -29,6 +30,11 @@ class Kelas extends Eloquent{
 	public function mst_user()
 	{
 		return $this->belongsTo(User::class, 'mst_user_id');
+	}
+
+	public function mst_topik_soal()
+	{
+		return $this->hasMany(TopikSoal::class, 'ref_kelas_id');
 	}
 
 

@@ -13,6 +13,7 @@ Route::group(['prefix' => 'backend'], function(){
 
 
 	require __DIR__.'/backend/guru_siswa.php';
+	require __DIR__.'/backend/quiz_siswa.php';
 
 
 });

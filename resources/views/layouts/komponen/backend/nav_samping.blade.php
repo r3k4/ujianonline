@@ -33,7 +33,13 @@
         </li>
     @endcan 
 
-
+@if(Auth::user()->ref_user_level_id == 3)
+         <li @if(isset($backend_quiz_siswa_home)) class="active" @endif >
+            <a href="{{ route('backend.quiz_siswa.index') }}">
+                <i class='fa fa-th-list'></i> Tugas / Quiz
+            </a>
+        </li>
+@endif
 
 
 @if(Auth::user()->ref_user_level_id == 2)
