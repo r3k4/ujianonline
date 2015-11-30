@@ -166,34 +166,8 @@ class Fungsi {
 	    }	    
 	    return $data;
 	}
-
-
-
-
-
-
-        public function bg_header(){
-            $array = array();
-            foreach(Bgheader::all() as $list){
-                $array[]=$list->nama;
-            }
-            return $array[array_rand($array)];
-	}
-        
-        
-        public function check_var_nav($var){
-            
-            if(isset($var)){
-                $data = 'class="active"';
-            }else{
-                $data= NULL;
-            }
-            return $data;
-        }
-        
-        
-        
-        
+ 
+         
     public function bulan2($rrr)
 	{
 	if($rrr=='1' || $rrr=='01'){$ttt='Januari';}

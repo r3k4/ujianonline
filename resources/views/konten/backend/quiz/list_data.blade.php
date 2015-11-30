@@ -5,7 +5,7 @@
 			<th>Topik Quiz Soal</th>
 			<th>Kelas</th>
 			<th class="text-center" width="100px">Jml Soal</th>
-			<th width="150px" class="text-center">Action</th>
+			<th width="100px" class="text-center">Action</th>
 		</tr>
 	</thead>
 	<tbody>

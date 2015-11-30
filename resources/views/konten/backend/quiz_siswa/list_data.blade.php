@@ -5,7 +5,7 @@
 			<th>Kelas</th>
 			<th>Pengajar</th>
 			<th width="120px" class="text-center">Jumlah Quiz</th>
-			<th class="text-center" width="150px">action</th>
+			<th class="text-center" width="80px">action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,7 +20,7 @@
 					{!! count($list->ref_kelas->mst_topik_soal) !!}
 				</span>
 			</td>
-			<td>
+			<td class="text-center">
 				@include($base_view.'action')
 			</td>
 		</tr>
