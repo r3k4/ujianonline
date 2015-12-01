@@ -6,10 +6,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helpers\Fungsi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Mst\KelasUser;
 use App\Models\Mst\PengerjaanSoal;
+use App\Models\Mst\Soal;
 use App\Models\Mst\TopikSoal;
 use App\Models\Ref\Kelas;
 use Illuminate\Http\Request;
@@ -21,14 +23,20 @@ class QuizSiswaController extends Controller
     protected $kelas;
     protected $topik_soal;
     protected $pengerjaan_soal;
+    protected $soal;
+    protected $fungsi;
 
     public function __construct( KelasUser $kelas_user,  
     							 Kelas $kelas,  
     							 TopikSoal $topik_soal,
-                                 PengerjaanSoal $pengerjaan_soal
+                                 PengerjaanSoal $pengerjaan_soal, 
+                                 Soal $soal,
+                                 Fungsi $fungsi
     							)
     {
-        $this->pengerjaan_soal = $pengerjaan_soal;
+        $this->fungsi           = $fungsi;
+        $this->soal             = $soal;
+        $this->pengerjaan_soal  = $pengerjaan_soal;
     	$this->topik_soal 	    = $topik_soal;
     	$this->kelas 		    = $kelas;
     	$this->kelas_user	    = $kelas_user;
@@ -116,12 +124,29 @@ class QuizSiswaController extends Controller
      */
     public function selesai_mengerjakan_soal(Request $request)
     {
-        return $request->mst_topik_soal_id;
-        $ps = $this->pengerjaan_soal->where('mst_topik_soal_id', '=', $request->mst_topik_soal_id)->first();
-        $ps->waktu_selesai = date('Y-m-d H:i:s');
-        $ps->save(); 
 
+        $ps = $this->pengerjaan_soal->where('mst_topik_soal_id', '=', $request->mst_topik_soal_id)->first();
+        if($ps->waktu_selesai == null){
+            $ps->waktu_selesai = date('Y-m-d H:i:s');
+            $ps->save();             
+        }
         return $ps;
+    }
+
+    /**
+     * GET halaman untuk menampilkan hasil nilai setelah mengerjakan
+     * @param  [type] $mst_topik_soal_id [description]
+     * @return [type]                    [description]
+     */
+    public function lihat_hasil($mst_topik_soal_id)
+    {
+        $soal = $this->soal
+                     ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
+                     ->paginate(10);
+        $fungsi = $this->fungsi;
+        $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
+        $vars = compact('soal', 'fungsi', 'topik_soal'); 
+        return view($this->base_view.'lihat_hasil.index', $vars);
     }
 
 

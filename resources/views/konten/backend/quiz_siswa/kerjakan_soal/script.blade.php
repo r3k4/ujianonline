@@ -7,10 +7,7 @@
     }
 ?>
 
-<h1>
-     <span id="countdown" class="timer"></span>    
-</h1>
-
+<h1><span id="countdown" class="timer"></span></h1>
 <span style='display:none' id="countdown2" class="timer"></span>
 
 <script>
@@ -41,7 +38,8 @@ function secondPassed() {
     if (seconds == 0) {
         // clearInterval(countdownTimer);
         // document.getElementById('countdown').innerHTML = "Selesai!!!";
-        // clearInterval(UpdateSession);
+        // clearInterval(UpdateSession); 
+
         $.ajax({
             url : '{!! route("backend.quiz_siswa.selesai_mengerjakan_soal") !!}',
             type : 'post',
@@ -62,7 +60,13 @@ function secondPassed() {
     } else {
         seconds--;
     }
+
+ 
+
 }
+
+
+
 
 function update_session(){
         value = $('#countdown2').text();

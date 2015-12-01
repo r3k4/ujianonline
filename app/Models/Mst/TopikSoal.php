@@ -2,6 +2,7 @@
 
 namespace App\Models\Mst;
 
+use App\Models\Mst\PengerjaanSoal;
 use App\Models\Mst\Soal;
 use App\Models\Mst\User;
 use App\Models\Ref\Kelas;
@@ -41,6 +42,12 @@ class TopikSoal extends Eloquent{
     public function mst_soal()
     {
         return $this->hasMany(Soal::class, 'mst_topik_soal_id');
+    }
+
+
+    public function mst_pengerjaan_soal()
+    {
+        return $this->hasMany(PengerjaanSoal::class, 'mst_topik_soal_id');
     }
 
 
