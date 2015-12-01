@@ -1,0 +1,20 @@
+@setup
+	$path_to_repo_file = '/home/foo/myapp'
+@endsetup
+
+@servers(['myservername' => 'username@example.com'])
+
+@task('list', ['on' => 'myservername'])
+	cd {{ $path_to_repo_file }}
+    ls -la
+@endtask
+
+@task('pull', ['on' => 'myservername'])
+	cd {{ $path_to_repo_file }}
+    git pull origin master
+@endtask
+
+@task('migrate', ['on' => 'myservername'])
+	cd {{ $path_to_repo_file }}
+    php artisan migrate 
+@endtask
