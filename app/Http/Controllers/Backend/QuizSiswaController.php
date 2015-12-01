@@ -9,6 +9,7 @@ namespace App\Http\Controllers\Backend;
 use App\Helpers\Fungsi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\Mst\JawabanSiswa;
 use App\Models\Mst\KelasUser;
 use App\Models\Mst\PengerjaanSoal;
 use App\Models\Mst\Soal;
@@ -25,16 +26,19 @@ class QuizSiswaController extends Controller
     protected $pengerjaan_soal;
     protected $soal;
     protected $fungsi;
+    protected $jawaban_siswa;
 
     public function __construct( KelasUser $kelas_user,  
     							 Kelas $kelas,  
     							 TopikSoal $topik_soal,
                                  PengerjaanSoal $pengerjaan_soal, 
                                  Soal $soal,
+                                 JawabanSiswa $jawaban_siswa,
                                  Fungsi $fungsi
     							)
     {
         $this->fungsi           = $fungsi;
+        $this->jawaban_siswa    = $jawaban_siswa;
         $this->soal             = $soal;
         $this->pengerjaan_soal  = $pengerjaan_soal;
     	$this->topik_soal 	    = $topik_soal;
@@ -84,9 +88,7 @@ class QuizSiswaController extends Controller
     {
         $topik_soal = $this->topik_soal
         				   ->findOrFail($mst_topik_soal_id);
-        $pengerjaan_soal = $this->pengerjaan_soal
-        						->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
-        						->first();         
+        $pengerjaan_soal = $this->pengerjaan_soal->getOnePengerjaan($mst_topik_soal_id, \Auth::user()->id);         
         $vars = compact('topik_soal', 'pengerjaan_soal');
         return view($this->base_view.'kerjakan_soal.index', $vars);
     }
@@ -99,9 +101,7 @@ class QuizSiswaController extends Controller
     public function update_timer_soal(Request $request)
     {
         if($request->has('mst_topik_soal_id')){
-            $check_pengerjaan = $this->pengerjaan_soal
-                                     ->where('mst_topik_soal_id', '=', $request->mst_topik_soal_id)
-                                     ->first();
+            $check_pengerjaan = $this->pengerjaan_soal->getOnePengerjaan($request->mst_topik_soal_id, \Auth::user()->id); 
             if(count($check_pengerjaan) <= 0){
                 $data_pengerjaan = [
                     'mst_topik_soal_id' => $request->mst_topik_soal_id,
@@ -125,7 +125,7 @@ class QuizSiswaController extends Controller
     public function selesai_mengerjakan_soal(Request $request)
     {
 
-        $ps = $this->pengerjaan_soal->where('mst_topik_soal_id', '=', $request->mst_topik_soal_id)->first();
+        $ps = $this->pengerjaan_soal->getOnePengerjaan($request->mst_topik_soal_id, \Auth::user()->id);
         if($ps->waktu_selesai == null){
             $ps->waktu_selesai = date('Y-m-d H:i:s');
             $ps->save();             
@@ -134,7 +134,7 @@ class QuizSiswaController extends Controller
     }
 
     /**
-     * GET halaman untuk menampilkan hasil nilai setelah mengerjakan
+     * GET halaman untuk menampilkan hasil setelah mengerjakan
      * @param  [type] $mst_topik_soal_id [description]
      * @return [type]                    [description]
      */
@@ -144,11 +144,30 @@ class QuizSiswaController extends Controller
                      ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
                      ->paginate(10);
         $fungsi = $this->fungsi;
+        $lihat_hasil = true;
         $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
-        $vars = compact('soal', 'fungsi', 'topik_soal'); 
+        $vars = compact('soal', 'fungsi', 'topik_soal', 'lihat_hasil'); 
         return view($this->base_view.'lihat_hasil.index', $vars);
     }
 
+
+    /**
+     * GET halaman untuk menampilkan nilai setelah mengerjakan
+     * @param  [type] $mst_topik_soal_id [description]
+     * @return [type]                    [description]
+     */
+    public function lihat_hasil_nilai($mst_topik_soal_id)
+    {
+        $soal = $this->soal
+                     ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
+                     ->get();
+        $fungsi = $this->fungsi;
+        $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
+        $lihat_hasil_nilai = true;
+        $total_jawaban_benar = $this->jawaban_siswa->total_jawaban_benar(\Auth::user()->id, $mst_topik_soal_id);
+        $vars = compact('soal', 'lihat_hasil_nilai', 'fungsi', 'topik_soal', 'total_jawaban_benar'); 
+        return view($this->base_view.'lihat_hasil_nilai.index', $vars);
+    }
 
 
 

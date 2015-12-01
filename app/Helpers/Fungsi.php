@@ -280,7 +280,35 @@ public function alphaID($in, $to_num = false, $pad_up = false, $passKey = null)
 
 
 
+  /* Fungsi untuk memastikan nilai agar 
+  *  memiliki 2 angka di belakang koma
+  *  param : $nilai = angka desimal, ex : 2.312100041321
+  *  digunakan untuk mengoreksi IPK atau IP mahasiswa
+  */
+  public function edit_angka($nilai){
+    
+    $na = round($nilai, 2);
+    //settype($na, 'string');
+    $arr = explode('.', $na);
+    $n1 = $arr[0]; //angka pertama di depan koma
+    if(isset($arr[1])){
+      $n2 = $arr[1]; //angka di blakang koma
+    }else{
+      $n2 = 0; //angka di blakang koma
+    }
 
+
+
+    $jml_char = strlen($n2);
+    if($jml_char == 0){ //jika bil bulat, ex: 3
+      $n2 = '.00';
+    }elseif($jml_char == 1){ //jika desimal tp hanya 1 angka di belakang koma
+      $n2 =  $n2.'0';
+    }else{
+      $n2 = $n2;
+    }
+    return $n1.'.'.$n2;
+  }
  
         
         

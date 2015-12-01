@@ -22,5 +22,13 @@ class PengerjaanSoal extends Eloquent{
     	return $this->belongsTo(User::class, 'mst_user_id');
     }
 
+    public function getOnePengerjaan($mst_topik_soal_id, $mst_user_id)
+    {
+        $p = $this->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
+                  ->where('mst_user_id', '=', $mst_user_id)
+                  ->first();
+        return $p;
+    }
+
 
 }

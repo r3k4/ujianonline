@@ -1,4 +1,3 @@
-<div class="row">
 	Jawaban yang dipilih : 
 	<br>
 	@if(count($list->mst_jawaban_siswa)>0) 
@@ -16,4 +15,4 @@
 			belum menjawab			
 		</div>
 	@endif
-</div>
+ 

@@ -2,7 +2,9 @@
 <?php $i = $soal->firstItem(); ?>
  @foreach($soal as $list)
 
- {!! $i.'. '.$list->soal !!} 
+<b style="font-size:15px">
+	{!! $i.'.'.$list->soal !!} 
+</b>
  <br> 
  	<ul class="list-unstyled" style="margin-left : 2em;">
  	<?php $no=1; ?>
@@ -14,8 +16,11 @@
 		@endforeach 		
  	</ul>
 
-@include($base_view.'lihat_hasil.komponen.jawaban_terpilih')
-
+<div class="row">
+	<div class="  col-md-6">
+		@include($base_view.'lihat_hasil.komponen.jawaban_terpilih')		
+	</div>
+</div>
 
 
  <hr>

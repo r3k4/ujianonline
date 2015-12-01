@@ -8,6 +8,9 @@
 	</h3>
 	<hr style="margin-top:0px;">
 
+@include($base_view.'lihat_hasil_nilai.komponen.nav_atas')
+
+<hr>
 
 @include($base_view.'lihat_hasil.list_data')
 
