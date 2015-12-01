@@ -74,9 +74,13 @@ class QuizSiswaController extends Controller
      */
     public function kerjakan_soal($mst_topik_soal_id)
     {
-        $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
-         
-        return view($this->base_view.'kerjakan_soal.index', compact('topik_soal'));
+        $topik_soal = $this->topik_soal
+        				   ->findOrFail($mst_topik_soal_id);
+        $pengerjaan_soal = $this->pengerjaan_soal
+        						->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
+        						->first();         
+        $vars = compact('topik_soal', 'pengerjaan_soal');
+        return view($this->base_view.'kerjakan_soal.index', $vars);
     }
 
     /**
@@ -114,10 +118,10 @@ class QuizSiswaController extends Controller
     {
         return $request->mst_topik_soal_id;
         $ps = $this->pengerjaan_soal->where('mst_topik_soal_id', '=', $request->mst_topik_soal_id)->first();
-        // $ps->waktu_selesai = date('Y-m-d H:i:s');
-        // $ps->save(); 
+        $ps->waktu_selesai = date('Y-m-d H:i:s');
+        $ps->save(); 
 
-        return count($ps);
+        return $ps;
     }
 
 

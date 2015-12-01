@@ -9,6 +9,7 @@
 <script type="text/javascript">
 
 	$('#kerjakan{!! $list->id !!}').click(function(){
+		if()
 		swal({
 			title : 'are you sure? ',
 			text : 'waktu pengerjaan {!! $list->waktu_pengerjaan !!} menit dan tidak bisa dibatalkan',

@@ -8,7 +8,13 @@
 
  
 
-	@include($base_view.'kerjakan_soal.script')
 
+	@if(count($pengerjaan_soal)>0)
+	 <div class="alert alert-danger">
+		anda sudah pernah mengerjakan tugas ini. 	
+	 </div>
+	@else
+		@include($base_view.'kerjakan_soal.script')
+	@endif
 
 @endsection
