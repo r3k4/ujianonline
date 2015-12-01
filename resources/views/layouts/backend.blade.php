@@ -9,10 +9,20 @@
 
     <link rel="stylesheet" href="{{ elixir('css/main.css') }}">
     <link rel="stylesheet" href="/plugins/sweetalert/sweetalert.css">
+
+
+
   <script src="{{ elixir('js/main.js') }}"></script>
   <script src="/plugins/sweetalert/sweetalert.min.js"></script>
+
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.js"></script>
+  <script src="/plugins/jquery.slimscroll.min.js"></script>
+
 <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
   
+
+
 
   </head>
   <body>

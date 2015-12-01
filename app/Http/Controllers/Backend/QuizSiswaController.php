@@ -89,7 +89,9 @@ class QuizSiswaController extends Controller
         $topik_soal = $this->topik_soal
         				   ->findOrFail($mst_topik_soal_id);
         $pengerjaan_soal = $this->pengerjaan_soal->getOnePengerjaan($mst_topik_soal_id, \Auth::user()->id);         
-        $vars = compact('topik_soal', 'pengerjaan_soal');
+        $soal = $this->soal->where('mst_topik_soal_id', '=', $mst_topik_soal_id)->get();        
+        $fungsi = $this->fungsi;
+        $vars = compact('topik_soal', 'pengerjaan_soal', 'soal', 'fungsi');
         return view($this->base_view.'kerjakan_soal.index', $vars);
     }
 
@@ -167,6 +169,33 @@ class QuizSiswaController extends Controller
         $total_jawaban_benar = $this->jawaban_siswa->total_jawaban_benar(\Auth::user()->id, $mst_topik_soal_id);
         $vars = compact('soal', 'lihat_hasil_nilai', 'fungsi', 'topik_soal', 'total_jawaban_benar'); 
         return view($this->base_view.'lihat_hasil_nilai.index', $vars);
+    }
+
+
+    /**
+     * POST submit jawaban per soal
+     * @return [type] [description]
+     */
+    public function submit_jawaban(Request $request)
+    {
+        $check_jawaban = $this->jawaban_siswa
+                              ->where('mst_user_id', '=', \Auth::user()->id)
+                              ->where('mst_soal_id', '=', $request->mst_soal_id)
+                              ->first();
+        if(count($check_jawaban)>0){
+            $check_jawaban->mst_jawaban_soal_id = $request->mst_jawaban_soal_id;
+            $check_jawaban->save();
+            return $check_jawaban;
+        }else{
+            $data_jawaban = [
+                'mst_jawaban_soal_id'   => $request->mst_jawaban_soal_id,
+                'mst_user_id'           => \Auth::user()->id,
+                'mst_soal_id'           => $request->mst_soal_id
+            ];
+            $insert = $this->jawaban_siswa->create($data_jawaban);
+            return $insert;
+        }
+
     }
 
 

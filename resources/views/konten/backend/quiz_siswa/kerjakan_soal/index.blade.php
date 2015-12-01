@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('main')
 
-	
+ 
 	@include($base_view.'kerjakan_soal.komponen.tombol_back')
 	@include($base_view.'kerjakan_soal.komponen.header')
 
@@ -11,10 +11,12 @@
 			anda sudah pernah mengerjakan tugas ini. 	
 		 </div>
 		@else
-			@include($base_view.'kerjakan_soal.script')
+			@include($base_view.'kerjakan_soal.script')	<hr>
+			@include($base_view.'kerjakan_soal.list_soal')
 		@endif
 	@else
-			@include($base_view.'kerjakan_soal.script')		
+			@include($base_view.'kerjakan_soal.script')			<hr>
+			@include($base_view.'kerjakan_soal.list_soal')
 	@endif
 
 

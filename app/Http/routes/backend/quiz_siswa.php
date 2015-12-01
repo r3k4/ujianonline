@@ -45,7 +45,12 @@ Route::group(['middleware' => ['auth', 'hanya_siswa']], function(){
 		'uses'	=> 'QuizSiswaController@lihat_hasil_nilai',
 	]);   
  
-  
+ 
+ 	post('quiz_siswa/submit_jawaban', [
+		'as'	=> 'backend.quiz_siswa.submit_jawaban',
+		'uses'	=> 'QuizSiswaController@submit_jawaban',
+	]);   
+ 
  
 });
 

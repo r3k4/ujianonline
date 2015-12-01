@@ -16,6 +16,12 @@ class JawabanSoal extends Eloquent{
     	return $this->belongsTo(Soal::class, 'mst_soal_id');
     }
 
+
+    public function mst_jawaban_siswa()
+    {
+    	return $this->hasOne(JawabanSiswa::class, 'mst_jawaban_soal_id');
+    }
+
  
 
 

@@ -7,10 +7,37 @@
     }
 ?>
 
-<h1><span id="countdown" class="timer"></span></h1>
+
+
+<button id="selesai" class="btn btn-success pull-right"> 
+    <i class='fa fa-check'></i> SELESAI 
+</button>
+
+
+<h1>Sisa Waktu : <span id="countdown" class="timer"></span></h1>
 <span style='display:none' id="countdown2" class="timer"></span>
 
 <script>
+
+
+$('#selesai').click(function(){
+        $.ajax({
+            url : '{!! route("backend.quiz_siswa.selesai_mengerjakan_soal") !!}',
+            type : 'post',
+            data : { _token : '{!! csrf_token() !!}', mst_topik_soal_id : {!! $topik_soal->id !!} },
+            error:function(err){
+                swal('error', 'terjadi kesalahan pada sisi serve', 'error');
+            },
+            success:function(ok){
+               swal({
+                title : 'selesai mengerjakan!',
+                type : 'success'
+               }, function(){
+                    window.location.href = '{!! route("backend.quiz_siswa.quiz",  $topik_soal->ref_kelas->id) !!}'
+               });
+            }
+        }); //ajax  
+});
 
 function toHHMMSS(seconds) {
     var h, m, s, result='';
