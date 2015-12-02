@@ -86,10 +86,9 @@ class QuizSiswaController extends Controller
      */
     public function kerjakan_soal($mst_topik_soal_id)
     {
-        $topik_soal = $this->topik_soal
-        				   ->findOrFail($mst_topik_soal_id);
+        $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
         $pengerjaan_soal = $this->pengerjaan_soal->getOnePengerjaan($mst_topik_soal_id, \Auth::user()->id);         
-        $soal = $this->soal->where('mst_topik_soal_id', '=', $mst_topik_soal_id)->get();        
+        $soal = $this->soal->getKerjakanSoal($mst_topik_soal_id);        
         $fungsi = $this->fungsi;
         $vars = compact('topik_soal', 'pengerjaan_soal', 'soal', 'fungsi');
         return view($this->base_view.'kerjakan_soal.index', $vars);

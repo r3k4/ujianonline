@@ -32,6 +32,24 @@ class Soal extends Eloquent{
 
 
     /**
+     * method ini digunakan untuk menampilkan soal yg hendak dikerjakan oleh siswa
+     * @param  [type] $mst_topik_soal_id [description]
+     * @return [type]                    [description]
+     */
+    public function getKerjakanSoal($mst_topik_soal_id)
+    {
+        $ts = TopikSoal::findOrFail($mst_topik_soal_id);
+        if($ts->is_soal_acak == 1){
+            //get soal acak
+            $s = $this->where('mst_topik_soal_id', '=', $mst_topik_soal_id)->orderByRaw("RAND()")->get();            
+        }else{
+            $s = $this->where('mst_topik_soal_id', '=', $mst_topik_soal_id)->orderBy('id', 'ASC')->get();                        
+        }
+        return $s;
+    }
+
+
+    /**
      * method untuk menge-check apakah di dalam soal sudah terdapat kunci jawaban
      * jika return 0, maka blm ada kunci jawaban. 
      * status = 1 = bermasalah
