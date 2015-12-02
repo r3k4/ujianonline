@@ -13,13 +13,13 @@ class userSeeder extends Seeder
      */
     public function run()
     {
-    	$check_user = User::where('email', '=', 'rey.barrolz@gmail.com')->first();
+    	$check_user = User::where('email', '=', 'admin@example.com')->first();
 
     	if(count($check_user)<=0){
 	    	$data = [
-	    		'nama' 				=> 'reka prihatanto', 
-	    		'email' 			=> 'rey.barrolz@gmail.com',
-	    		'password'			=> bcrypt('111111'),
+	    		'nama' 				=> 'administrator', 
+	    		'email' 			=> 'admin@example.com',
+	    		'password'			=> bcrypt('123456'),
 	    		'ref_user_level_id'	=> 1,
 	    		'aktif'				=> 1
 	    		];
