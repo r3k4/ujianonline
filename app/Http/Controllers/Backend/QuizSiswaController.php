@@ -144,7 +144,7 @@ class QuizSiswaController extends Controller
     {
         $soal = $this->soal
                      ->where('mst_topik_soal_id', '=', $mst_topik_soal_id)
-                     ->paginate(10);
+                     ->paginate(5);
         $fungsi = $this->fungsi;
         $lihat_hasil = true;
         $topik_soal = $this->topik_soal->findOrFail($mst_topik_soal_id);
