@@ -8,7 +8,9 @@ use App\Http\Requests;
 use App\Http\Requests\Quiz\createJawabanSoal;
 use App\Http\Requests\Quiz\createSoalRequest;
 use App\Http\Requests\Quiz\createTopikQuizRequest;
+use App\Models\Mst\JawabanSiswa;
 use App\Models\Mst\JawabanSoal;
+use App\Models\Mst\KelasUser;
 use App\Models\Mst\Soal;
 use App\Models\Mst\TopikSoal;
 use App\Models\Mst\User;
@@ -317,6 +319,25 @@ class QuizController extends Controller
         $js->is_benar = 1;
         $js->save();
         return 'ok';
+    }
+
+
+    /**
+     * GET action untuk melihat daftar siswa 
+     * beserta nilainya di tiap2 topik yg ada
+     * @param  [type] $mst_topik_soal_id [description]
+     * @return [type]                    [description]
+     */
+    public function manage_siswa_view_nilai($mst_topik_soal_id, 
+                                            KelasUser $kelas_user, 
+                                            JawabanSiswa $jawaban_siswa,  
+                                            Fungsi $fungsi
+                                            )
+    {
+        $topik = $this->topik_soal->findOrFail($mst_topik_soal_id);
+        $kelas_user = $kelas_user->where('ref_kelas_id', '=', $topik->ref_kelas_id)->get();
+        $vars = compact('topik', 'kelas_user', 'jawaban_siswa', 'fungsi');
+        return view($this->base_view.'popup.view_nilai_siswa', $vars);
     }
 
 

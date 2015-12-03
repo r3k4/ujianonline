@@ -5,7 +5,7 @@
 			<th>Topik Quiz Soal</th>
 			<th>Kelas</th>
 			<th class="text-center" width="100px">Jml Soal</th>
-			<th width="130px" class="text-center">Action</th>
+			<th width="160px" class="text-center">Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,6 +25,9 @@
 				<span class='label label-success'>{!! count($list->mst_soal) !!}</span>
 			</td>
 			<td class="text-center">
+				@include($base_view.'action.view_nilai_siswa')
+				||
+
 				@include($base_view.'action.edit')
 				|| 
 				@include($base_view.'action.view_detail')

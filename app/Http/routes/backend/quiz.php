@@ -108,7 +108,10 @@ Route::group(['middleware' => ['auth']], function(){
 	]);
 
 
-
+	get('quiz/manage_siswa/view_nilai/{mst_topik_soal_id}', [
+		'as'	=> 'backend.quiz.manage_siswa.view_nilai',
+		'uses'	=> 'QuizController@manage_siswa_view_nilai',
+	]);
 
 
 });
