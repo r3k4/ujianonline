@@ -23,6 +23,12 @@ Route::group(['middleware' => ['auth', 'hanya_siswa']], function(){
 		'uses'	=> 'QuizSiswaController@kerjakan_soal',
 	]);
 	
+ 	get('quiz_siswa/detail_topik/{mst_topik_soal_id}', [
+		'as'	=> 'backend.quiz_siswa.detail_topik',
+		'uses'	=> 'QuizSiswaController@detail_topik',
+	]);
+	
+
   
  	post('quiz_siswa/update_timer_soal', [
 		'as'	=> 'backend.quiz_siswa.update_timer_soal',

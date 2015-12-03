@@ -79,6 +79,16 @@ class QuizSiswaController extends Controller
     }
 
 
+    public function detail_topik($mst_topik_soal_id)
+    {
+        $topik = $this->topik_soal->findOrFail($mst_topik_soal_id);
+        $pengerjaan_soal = $this->pengerjaan_soal->getSelisihWaktu($mst_topik_soal_id);
+        //dd($pengerjaan_soal);
+        $vars = compact('topik');
+        return view($this->base_view.'quiz.popup.view_detail_topik', $vars);
+    }
+
+
     /**
      * GET menampilkan halaman untuk mengerjakan soal bagi level siswa
      * @param  [type] $mst_soal_id [description]
