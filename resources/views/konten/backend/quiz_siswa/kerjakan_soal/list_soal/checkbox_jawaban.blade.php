@@ -3,11 +3,11 @@
 	   id="jawaban_no{!! $list_jawaban->id !!}" 
 	   value="{!! $list_jawaban->id !!}" 
 	   aria-label="..."
-	   @if(count($list_jawaban->mst_jawaban_siswa)>0)
+	   @if(count($list_jawaban->mst_jawaban_siswa()->where('mst_user_id', '=', \Auth::user()->id)->first())>0)
 		   checked="true" 
 	   @endif
 >
-
+ 
  
 
 <script type="text/javascript">
