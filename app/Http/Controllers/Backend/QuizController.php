@@ -53,7 +53,10 @@ class QuizController extends Controller
      */
     public function index()
     {
-    	$topik_quiz = $this->topik_soal->with('ref_kelas')->paginate(10);
+    	$topik_quiz = $this->topik_soal
+                           ->orderBy('id', 'DESC')
+                           ->with('ref_kelas')
+                           ->paginate(10);
         $vars = compact('topik_quiz');
     	return view($this->base_view.'index', $vars);
     }
