@@ -19,8 +19,12 @@
 				{!! $list->nama !!}
 			</td>
 			<td>
-				{!! $list->ref_kelas->nama !!}
-			</td>
+				@if(count($list->ref_kelas)>0) 
+					{!! $list->ref_kelas->nama !!}
+				@else 
+					<span data-toggle='tooltip' title='tdk ada relasi kelas' class='text-danger'>error!</span>
+				@endif
+			</td> 
 			<td class="text-center">
 				<span class='label label-success'>{!! count($list->mst_soal) !!}</span>
 			</td>
