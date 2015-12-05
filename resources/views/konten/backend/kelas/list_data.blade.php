@@ -17,7 +17,13 @@
 			<td class="text-center">{!! $no !!}</td>
 			<td>{!! $list->nama !!}</td>
 			<td>{!! $list->kode_kelas !!}</td>
-			<td>{!! $list->ref_mapel->nama !!}</td>
+			<td>
+				@if(count($list->ref_mapel)>0)
+					{!! $list->ref_mapel->nama !!}
+				@else 
+					<span data-toggle='tooltip' title='tidak ada relasi' class='text-danger'>error!</span>
+				@endif
+			</td>
 			<td class="text-center">
 				<span class="label label-success"> 
 					{!! count($list->mst_kelas_user) !!}
