@@ -43,6 +43,7 @@ class KelasGuruController extends Controller
 	{
 		$kelas = $this->kelas
 				->where('mst_user_id', '=', \Auth::user()->id)
+				->orderBy('id', 'DESC')
 				->with('mst_kelas_user', 'ref_mapel')
 				->paginate(10);
 		$vars = compact('kelas');
