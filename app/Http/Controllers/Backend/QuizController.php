@@ -56,6 +56,7 @@ class QuizController extends Controller
     	$topik_quiz = $this->topik_soal
                            ->orderBy('id', 'DESC')
                            ->with('ref_kelas')
+                           ->where('mst_user_id', '=', \Auth::user()->id)
                            ->paginate(10);
         $vars = compact('topik_quiz');
     	return view($this->base_view.'index', $vars);
